@@ -20,9 +20,11 @@ tab ['\t']
 "#".* {;}
 "//".* {;}
 "/*"(.|{newline})*"*/" {for(int i=0; i<strlen(yytext); i++){if(yytext[i] == '\n'){line++;}}}
+\"(.)*\" {insertIntoTable(line, yytext, "STRING"); return STRING;}
 int {insertIntoTable(line, yytext, "KEYWORD"); return INT;}
 char {insertIntoTable(line, yytext, "KEYWORD"); return CHAR;}
 float {insertIntoTable(line, yytext, "KEYWORD"); return FLOAT;}
+void {insertIntoTable(line, yytext, "KEYWORD"); return VOID;}
 if {insertIntoTable(line, yytext, "KEYWORD"); return IF;}
 else {insertIntoTable(line, yytext, "KEYWORD"); return ELSE;}
 for {insertIntoTable(line, yytext, "KEYWORD"); return FOR;}
@@ -35,13 +37,15 @@ printf {insertIntoTable(line, yytext, "KEYWORD"); return PRINTF;}
 default {insertIntoTable(line, yytext, "KEYWORD"); return DEFAULT;}
 case {insertIntoTable(line, yytext, "KEYWORD"); return CASE;}
 
-{alp}({alp}|{digit})* {insertIntoTable(line, yytext, "IDENTIFIER"); return IDENTIFIER;}
+{alp}({alp}|{digit})* {insertIntoTable(line, yytext, "IDENTIFIER"); return ID;}
 "-"?{digit}+ {insertIntoTable(line, yytext, "INT_CONST"); return INT_CONST;}
 "-"?{digit}+\.{digit}+ {insertIntoTable(line, yytext, "FLOAT_CONST"); return FLOAT_CONST;}
 \'.\' {insertIntoTable(line, yytext, "CHAR_CONST"); return CHAR_CONST;}
 \\n {return NEWLINE;}
-("+"|"-"|"*"|"/"|">"|"<"|\"|";"|","|"="|"%") {insertIntoTable(line, yytext, "OPERATOR"); return *yytext;}
-("("|")"|"{"|"}"|"["|"]") {insertIntoTable(line, yytext, "SYMBOL"); return *yytext;}
+("+"|"-"|"*"|"/"|">"|"<"|\"|";"|","|"="|"%") {insertIntoTable(line, yytext, "OPE RATOR"); return *yytext;}
+("("|")"|"{"|"}"|"["|"]") {
+    //insertIntoTable(line, yytext, "SYMBOL");
+    return *yytext;}
 ">=" {insertIntoTable(line, yytext, "SYMBOL"); return GTR_EQ;}
 "<=" {insertIntoTable(line, yytext, "SYMBOL"); return LESS_EQ;}
 "==" {insertIntoTable(line, yytext, "SYMBOL"); return EQ_EQ;}
@@ -53,8 +57,10 @@ case {insertIntoTable(line, yytext, "KEYWORD"); return CASE;}
 
 ({digit})+({alp}|{digit})* {insertIntoTable(line, yytext, "UNKNOWN"); return UNK;}
 
+{alp}({alp}|{digit})*\[\] {insertIntoTable(line,yytext,"ARR_E");return ARR_E;}
 {alp}({alp}|{digit})*\[({digit}*)\] {insertIntoTable(line,yytext,"ARR");return ARR;}
-{alp}({alp}|{digit})*\(({alp}|{digit}|{space})*\) {insertIntoTable(line, yytext, "FUNCTION"); return FUNC;}
+{alp}({alp}|{digit})*\[({digit}*)\]\[({digit}*)\] {insertIntoTable(line,yytext,"ARR2");return ARR2;}
+{alp}({alp}|{digit})*\(({alp}|{digit}|{space}|,)*\) {insertIntoTable(line, yytext, "FUNCTION"); REJECT; return FUNC;}
 
 %%
 typedef struct node {

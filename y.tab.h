@@ -54,35 +54,40 @@ extern int yydebug;
     YYEOF = 0,                     /* "end of file"  */
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
-    IDENTIFIER = 258,              /* IDENTIFIER  */
+    ID = 258,                      /* ID  */
     INT_CONST = 259,               /* INT_CONST  */
     FLOAT_CONST = 260,             /* FLOAT_CONST  */
     CHAR_CONST = 261,              /* CHAR_CONST  */
     ARR = 262,                     /* ARR  */
-    FUNC = 263,                    /* FUNC  */
-    INT = 264,                     /* INT  */
-    FLOAT = 265,                   /* FLOAT  */
-    CHAR = 266,                    /* CHAR  */
-    IF = 267,                      /* IF  */
-    ELSE = 268,                    /* ELSE  */
-    WHILE = 269,                   /* WHILE  */
-    FOR = 270,                     /* FOR  */
-    SWITCH = 271,                  /* SWITCH  */
-    CONTINUE = 272,                /* CONTINUE  */
-    BREAK = 273,                   /* BREAK  */
-    RETURN = 274,                  /* RETURN  */
-    PRINTF = 275,                  /* PRINTF  */
-    DEFAULT = 276,                 /* DEFAULT  */
-    CASE = 277,                    /* CASE  */
-    GTR_EQ = 278,                  /* GTR_EQ  */
-    LESS_EQ = 279,                 /* LESS_EQ  */
-    NOT_EQ = 280,                  /* NOT_EQ  */
-    AND = 281,                     /* AND  */
-    OR = 282,                      /* OR  */
-    NOT = 283,                     /* NOT  */
-    EQ_EQ = 284,                   /* EQ_EQ  */
-    NEWLINE = 285,                 /* NEWLINE  */
-    UNK = 286                      /* UNK  */
+    ARR2 = 263,                    /* ARR2  */
+    ARR_E = 264,                   /* ARR_E  */
+    FUNC = 265,                    /* FUNC  */
+    STRING = 266,                  /* STRING  */
+    INT = 267,                     /* INT  */
+    FLOAT = 268,                   /* FLOAT  */
+    CHAR = 269,                    /* CHAR  */
+    VOID = 270,                    /* VOID  */
+    IF = 271,                      /* IF  */
+    ELSE = 272,                    /* ELSE  */
+    WHILE = 273,                   /* WHILE  */
+    FOR = 274,                     /* FOR  */
+    SWITCH = 275,                  /* SWITCH  */
+    CONTINUE = 276,                /* CONTINUE  */
+    BREAK = 277,                   /* BREAK  */
+    RETURN = 278,                  /* RETURN  */
+    PRINTF = 279,                  /* PRINTF  */
+    DEFAULT = 280,                 /* DEFAULT  */
+    CASE = 281,                    /* CASE  */
+    GTR_EQ = 282,                  /* GTR_EQ  */
+    LESS_EQ = 283,                 /* LESS_EQ  */
+    NOT_EQ = 284,                  /* NOT_EQ  */
+    AND = 285,                     /* AND  */
+    OR = 286,                      /* OR  */
+    NOT = 287,                     /* NOT  */
+    EQ_EQ = 288,                   /* EQ_EQ  */
+    NEWLINE = 289,                 /* NEWLINE  */
+    UNK = 290,                     /* UNK  */
+    END_OF_FILE = 291              /* END_OF_FILE  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -91,35 +96,40 @@ extern int yydebug;
 #define YYEOF 0
 #define YYerror 256
 #define YYUNDEF 257
-#define IDENTIFIER 258
+#define ID 258
 #define INT_CONST 259
 #define FLOAT_CONST 260
 #define CHAR_CONST 261
 #define ARR 262
-#define FUNC 263
-#define INT 264
-#define FLOAT 265
-#define CHAR 266
-#define IF 267
-#define ELSE 268
-#define WHILE 269
-#define FOR 270
-#define SWITCH 271
-#define CONTINUE 272
-#define BREAK 273
-#define RETURN 274
-#define PRINTF 275
-#define DEFAULT 276
-#define CASE 277
-#define GTR_EQ 278
-#define LESS_EQ 279
-#define NOT_EQ 280
-#define AND 281
-#define OR 282
-#define NOT 283
-#define EQ_EQ 284
-#define NEWLINE 285
-#define UNK 286
+#define ARR2 263
+#define ARR_E 264
+#define FUNC 265
+#define STRING 266
+#define INT 267
+#define FLOAT 268
+#define CHAR 269
+#define VOID 270
+#define IF 271
+#define ELSE 272
+#define WHILE 273
+#define FOR 274
+#define SWITCH 275
+#define CONTINUE 276
+#define BREAK 277
+#define RETURN 278
+#define PRINTF 279
+#define DEFAULT 280
+#define CASE 281
+#define GTR_EQ 282
+#define LESS_EQ 283
+#define NOT_EQ 284
+#define AND 285
+#define OR 286
+#define NOT 287
+#define EQ_EQ 288
+#define NEWLINE 289
+#define UNK 290
+#define END_OF_FILE 291
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED

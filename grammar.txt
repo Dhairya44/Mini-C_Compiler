@@ -1,0 +1,57 @@
+REMAINING:
+
+1. ARRAY
+2. FUNCTION CALL AND DECLARATION
+3. PRINTF (Done)
+4. SWITCH-CASE (If only required)
+5. RETURN SINGLE ARRAY ELEMENT
+6. VOID CHANGES
+7. STRING CHANGES
+8. FUNC_DECL
+9. ARR_DECL
+10. IF
+11. Func_Call (change karna hoga)
+12. 2D ARRAY BHI DAALNA HAIN
+13. ARRAY INITIALIZATION ID
+
+GRAMMAR:
+
+Stmt -> Decl | If | While | For 
+
+If -> IF '(' Expr ')' '{' Stmt_List '}'
+
+For -> FOR '(' Decl Expr ';' ASSGN ')' '{' Stmt_List '}'
+
+While -> WHILE '(' Expr ')' '{' Stmt_List '}'
+
+Expr -> ID | Expr '+ - * / < > <= >= == !=' Expr | 
+	'(' Expr ')' | CONST
+
+Decl -> Type ASSGN ';'
+	| ASSGN ';'
+
+ASSGN -> ID '=' EXPR| ID | ID '=' EXPR ',' ASSGN
+	| ID ',' ASSGN********************************
+
+I
+**************************************************************
+expr -> expr comp_op term | term
+comp_op -> >= | <= | != | == | > | <
+term -> term add_op factor | factor
+add_op -> + | -
+factor -> factor mul_op primary | primary
+mul_op -> * | /
+primary -> ( expr ) | ID | NUM
+assign_stmt -> ID = expr assign_tail ;
+assign_tail -> , ID = expr assign_tail | ε
+decl_stmt -> TYPE ID decl_tail ; | TYPE ID decl_tail rec_decl_tail ;
+rec_decl_tail -> , ID decl_tail rec_decl_tail | ε 
+decl_tail -> = expr | ε
+
+I********************************
+
+I********************************
+
+I********************************
+
+I
