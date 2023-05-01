@@ -122,8 +122,8 @@ void printTable(){
     }
 }
 
-int main(int argc, char *argv[]){
-    yyin = fopen(argv[1], "r");
+int main(){
+    yyin = fopen("../input.txt", "r");
     int scan = yylex();
     while(scan){
         switch(scan){

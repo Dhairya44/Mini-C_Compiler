@@ -13,6 +13,8 @@ REMAINING:
 11. Func_Call (change karna hoga)
 12. 2D ARRAY BHI DAALNA HAIN
 13. ARRAY INITIALIZATION ID
+14. SCOPE WAALI CHEEZ BAAD ME
+
 
 GRAMMAR:
 
@@ -31,10 +33,9 @@ Decl -> Type ASSGN ';'
 	| ASSGN ';'
 
 ASSGN -> ID '=' EXPR| ID | ID '=' EXPR ',' ASSGN
-	| ID ',' ASSGN********************************
+	| ID ',' ASSGN
 
-I
-**************************************************************
+
 expr -> expr comp_op term | term
 comp_op -> >= | <= | != | == | > | <
 term -> term add_op factor | factor
@@ -42,16 +43,10 @@ add_op -> + | -
 factor -> factor mul_op primary | primary
 mul_op -> * | /
 primary -> ( expr ) | ID | NUM
+
 assign_stmt -> ID = expr assign_tail ;
 assign_tail -> , ID = expr assign_tail | ε
+
 decl_stmt -> TYPE ID decl_tail ; | TYPE ID decl_tail rec_decl_tail ;
 rec_decl_tail -> , ID decl_tail rec_decl_tail | ε 
-decl_tail -> = expr | ε
-
-I********************************
-
-I********************************
-
-I********************************
-
-I
+decl_tail -> = expr | ε********************************

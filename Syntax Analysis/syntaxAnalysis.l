@@ -12,6 +12,7 @@ digit [0-9]
 newline [\n]
 space [' ']
 tab ['\t']
+%x FUNCTION
 %%
 
 {newline} {line++;}
@@ -42,9 +43,8 @@ case {insertIntoTable(line, yytext, "KEYWORD"); return CASE;}
 "-"?{digit}+\.{digit}+ {insertIntoTable(line, yytext, "FLOAT_CONST"); return FLOAT_CONST;}
 \'.\' {insertIntoTable(line, yytext, "CHAR_CONST"); return CHAR_CONST;}
 \\n {return NEWLINE;}
-("+"|"-"|"*"|"/"|">"|"<"|\"|";"|","|"="|"%") {insertIntoTable(line, yytext, "OPE RATOR"); return *yytext;}
-("("|")"|"{"|"}"|"["|"]") {
-    //insertIntoTable(line, yytext, "SYMBOL");
+("+"|"-"|"*"|"/"|">"|"<"|\"|";"|","|"="|"%") {insertIntoTable(line, yytext, "OPERATOR"); return *yytext;}
+("("|")"|"{"|"}"|"["|"]") {//insertIntoTable(line, yytext, "SYMBOL");
     return *yytext;}
 ">=" {insertIntoTable(line, yytext, "SYMBOL"); return GTR_EQ;}
 "<=" {insertIntoTable(line, yytext, "SYMBOL"); return LESS_EQ;}
@@ -60,7 +60,21 @@ case {insertIntoTable(line, yytext, "KEYWORD"); return CASE;}
 {alp}({alp}|{digit})*\[\] {insertIntoTable(line,yytext,"ARR_E");return ARR_E;}
 {alp}({alp}|{digit})*\[({digit}*)\] {insertIntoTable(line,yytext,"ARR");return ARR;}
 {alp}({alp}|{digit})*\[({digit}*)\]\[({digit}*)\] {insertIntoTable(line,yytext,"ARR2");return ARR2;}
-{alp}({alp}|{digit})*\(({alp}|{digit}|{space}|,)*\) {insertIntoTable(line, yytext, "FUNCTION"); REJECT; return FUNC;}
+{alp}({alp}|{digit})*\(({alp}|{digit}|{space}|,)*\) {
+                                                    for(int i = yyleng-1; i>=0; i--){
+                                                        unput(yytext[i]);
+                                                    }
+                                                    BEGIN(FUNCTION);}
+
+<FUNCTION>{alp}({alp}|{digit})* {
+                                BEGIN(INITIAL);
+                                if(strcmp("if", yytext)==0){insertIntoTable(line, yytext, "KEYWORD"); return IF;}
+                                else if(strcmp("printf", yytext)==0){insertIntoTable(line, yytext, "KEYWORD"); return PRINTF;}
+                                else if(strcmp("for", yytext)==0){insertIntoTable(line, yytext, "KEYWORD"); return FOR;}
+                                else if(strcmp("while", yytext)==0){insertIntoTable(line, yytext, "KEYWORD"); return WHILE;}
+                                insertIntoTable(line, yytext, "FUNCTION");
+                                return FUNC;
+                                }
 
 %%
 typedef struct node {

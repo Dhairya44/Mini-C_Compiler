@@ -1,18 +1,19 @@
-void solve(int a, int b){
-	/*int c[3][3] = {{1,2,3},{4,5,6},{7,8,9}};
-	;
-	printf("Hello World!\n", a, b, c);
-	main(a, b);*/
-	if(234){
-		if(234){
-			;
-		}else{
-			;
-		}
-	}else{
-		if(234){
-			;
-		}
-	}
-	return 234.42;
+#include<stdio.h>
+int solve(int a, int b)
+{
+	int c = a + b;
+	return c;
+}
+
+float foo(){
+	int d = 1;
+}
+
+void main()
+{
+	int a = 3, c = 2;
+	int b = a * c;
+	int dhairya = 1;
+	solve(dhairya, b);
+	float x = foo();
 }

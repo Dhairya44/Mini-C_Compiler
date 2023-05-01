@@ -12,6 +12,7 @@ REMAINING:
 10. IF
 11. Func_Call (change karna hoga)
 12. 2D ARRAY BHI DAALNA HAIN
+13. global statement
 
 GRAMMAR:
 
