@@ -7,7 +7,7 @@
     enum tokens {KEYWORD=1, IDENTIFIER, INT_CONST, FLOAT_CONST, CHAR_CONST, OPERATOR, SYMBOL, ARR, FUNC};
     enum keywords {INT=100, FLOAT, CHAR, IF, ELSE, FOR, WHILE, SWITCH, CONTINUE, BREAK, RETURN, PRINTF, DEFAULT, CASE};
     enum operators {PLUS=200, MINUS, MUL, DIV, GTR, LESS, GTR_EQ, LESS_EQ, EQ, NOT_EQ, AND, OR, NOT, EQ_EQ};
-    enum symbols {SEMICOLON=300, COMMA, LPAREN, RPAREN, LBRACE, RBRACE, LBRACKET, RBRACKET, SQT, DQT, PER, NEWLINE};
+    enum symbols {SEMICOLON=300, COMMA, LPAREN, RPAREN, LBRACE, RBRACE, LBRACKET, RBRACKET, SQT, DQT, PER, NEWLINE, COLON};
     enum unknown {UNK=400};
 %}
 
@@ -59,6 +59,7 @@ case {return CASE;}
 "\|\|" {return OR;}
 "!" {return NOT;}
 ";" {return SEMICOLON;}
+":" {return COLON;}
 "," {return COMMA;}
 "\(" {return LPAREN;}
 "\)" {return RPAREN;}

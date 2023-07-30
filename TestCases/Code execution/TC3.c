@@ -9,7 +9,6 @@ int main()
           b[a]=a*5-2/2;		
 	  a=a+1;
 	}
-	int x = b[2], y = b[4];
-	printf("%d %d", x, y); 
+	printf("%d %d", b[2], b[4]); 
 return 1;
 }

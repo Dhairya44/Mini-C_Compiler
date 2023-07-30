@@ -43,7 +43,7 @@ case {insertIntoTable(line, yytext, "KEYWORD"); return CASE;}
 "-"?{digit}+\.{digit}+ {insertIntoTable(line, yytext, "FLOAT_CONST"); return FLOAT_CONST;}
 \'.\' {insertIntoTable(line, yytext, "CHAR_CONST"); return CHAR_CONST;}
 \\n {return NEWLINE;}
-("+"|"-"|"*"|"/"|">"|"<"|\"|";"|","|"="|"%") {insertIntoTable(line, yytext, "OPERATOR"); return *yytext;}
+("+"|"-"|"*"|"/"|">"|"<"|\"|";"|","|"="|"%"|":") {insertIntoTable(line, yytext, "OPERATOR"); return *yytext;}
 ("("|")"|"{"|"}"|"["|"]") {//insertIntoTable(line, yytext, "SYMBOL");
     return *yytext;}
 ">=" {insertIntoTable(line, yytext, "SYMBOL"); return GTR_EQ;}
@@ -72,6 +72,7 @@ case {insertIntoTable(line, yytext, "KEYWORD"); return CASE;}
                                 else if(strcmp("printf", yytext)==0){insertIntoTable(line, yytext, "KEYWORD"); return PRINTF;}
                                 else if(strcmp("for", yytext)==0){insertIntoTable(line, yytext, "KEYWORD"); return FOR;}
                                 else if(strcmp("while", yytext)==0){insertIntoTable(line, yytext, "KEYWORD"); return WHILE;}
+                                else if(strcmp("switch", yytext)==0){insertIntoTable(line, yytext, "KEYWORD"); return SWITCH;}
                                 insertIntoTable(line, yytext, "FUNCTION");
                                 return FUNC;
                                 }

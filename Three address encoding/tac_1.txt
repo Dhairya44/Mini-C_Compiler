@@ -1,0 +1,47 @@
+
+a = 10 
+
+T0 = a + 1 
+
+a = T0 
+
+L1: 
+
+T1 = a > 10 
+
+T2 = a + 5 
+
+a = T2 
+iffalse T1 goto L2
+
+L2: 
+
+T3 = a - 5 
+
+a = T3 
+
+L3: 
+
+i = 1 
+
+T4 = i <= 10 
+
+T5 = i + 1 
+
+i = T5 
+
+T6 = a * 2 
+
+a = T6 
+
+T7 = a - 2 
+
+a = T7 
+
+iftrue T4 goto L3
+
+T8 = a + 10 
+
+a = T8 
+
+Parse Successful!

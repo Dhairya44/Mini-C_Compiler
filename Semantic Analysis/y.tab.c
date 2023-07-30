@@ -79,10 +79,12 @@
     extern FILE *yyin;
     
     int decCounter = 0;
+    int scopeCounter = 0;
     int list_c = 0;
     char *listType[100];
+    char *returnType_func  = "VOID";
 
-#line 86 "y.tab.c"
+#line 88 "y.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -126,42 +128,42 @@ extern int yydebug;
     YYEOF = 0,                     /* "end of file"  */
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
-    ARR = 258,                     /* ARR  */
-    ARR2 = 259,                    /* ARR2  */
-    ARR_E = 260,                   /* ARR_E  */
-    STRING = 261,                  /* STRING  */
-    INT = 262,                     /* INT  */
-    FLOAT = 263,                   /* FLOAT  */
-    CHAR = 264,                    /* CHAR  */
-    VOID = 265,                    /* VOID  */
-    IF = 266,                      /* IF  */
-    ELSE = 267,                    /* ELSE  */
-    WHILE = 268,                   /* WHILE  */
-    FOR = 269,                     /* FOR  */
-    SWITCH = 270,                  /* SWITCH  */
-    CONTINUE = 271,                /* CONTINUE  */
-    BREAK = 272,                   /* BREAK  */
-    RETURN = 273,                  /* RETURN  */
-    PRINTF = 274,                  /* PRINTF  */
-    DEFAULT = 275,                 /* DEFAULT  */
-    CASE = 276,                    /* CASE  */
-    GTR_EQ = 277,                  /* GTR_EQ  */
-    LESS_EQ = 278,                 /* LESS_EQ  */
-    NOT_EQ = 279,                  /* NOT_EQ  */
-    AND = 280,                     /* AND  */
-    OR = 281,                      /* OR  */
-    NOT = 282,                     /* NOT  */
-    EQ_EQ = 283,                   /* EQ_EQ  */
-    LESS = 284,                    /* LESS  */
-    GTR = 285,                     /* GTR  */
-    NEWLINE = 286,                 /* NEWLINE  */
-    UNK = 287,                     /* UNK  */
-    END_OF_FILE = 288,             /* END_OF_FILE  */
-    ID = 289,                      /* ID  */
-    INT_CONST = 290,               /* INT_CONST  */
-    FLOAT_CONST = 291,             /* FLOAT_CONST  */
-    CHAR_CONST = 292,              /* CHAR_CONST  */
-    FUNC = 293                     /* FUNC  */
+    ARR2 = 258,                    /* ARR2  */
+    ARR_E = 259,                   /* ARR_E  */
+    INT = 260,                     /* INT  */
+    FLOAT = 261,                   /* FLOAT  */
+    CHAR = 262,                    /* CHAR  */
+    VOID = 263,                    /* VOID  */
+    IF = 264,                      /* IF  */
+    ELSE = 265,                    /* ELSE  */
+    WHILE = 266,                   /* WHILE  */
+    FOR = 267,                     /* FOR  */
+    SWITCH = 268,                  /* SWITCH  */
+    CONTINUE = 269,                /* CONTINUE  */
+    BREAK = 270,                   /* BREAK  */
+    RETURN = 271,                  /* RETURN  */
+    PRINTF = 272,                  /* PRINTF  */
+    DEFAULT = 273,                 /* DEFAULT  */
+    CASE = 274,                    /* CASE  */
+    GTR_EQ = 275,                  /* GTR_EQ  */
+    LESS_EQ = 276,                 /* LESS_EQ  */
+    NOT_EQ = 277,                  /* NOT_EQ  */
+    AND = 278,                     /* AND  */
+    OR = 279,                      /* OR  */
+    NOT = 280,                     /* NOT  */
+    EQ_EQ = 281,                   /* EQ_EQ  */
+    LESS = 282,                    /* LESS  */
+    GTR = 283,                     /* GTR  */
+    NEWLINE = 284,                 /* NEWLINE  */
+    UNK = 285,                     /* UNK  */
+    END_OF_FILE = 286,             /* END_OF_FILE  */
+    ID = 287,                      /* ID  */
+    INT_CONST = 288,               /* INT_CONST  */
+    FLOAT_CONST = 289,             /* FLOAT_CONST  */
+    CHAR_CONST = 290,              /* CHAR_CONST  */
+    FUNC = 291,                    /* FUNC  */
+    STRING = 292,                  /* STRING  */
+    ARR = 293                      /* ARR  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -170,55 +172,55 @@ extern int yydebug;
 #define YYEOF 0
 #define YYerror 256
 #define YYUNDEF 257
-#define ARR 258
-#define ARR2 259
-#define ARR_E 260
-#define STRING 261
-#define INT 262
-#define FLOAT 263
-#define CHAR 264
-#define VOID 265
-#define IF 266
-#define ELSE 267
-#define WHILE 268
-#define FOR 269
-#define SWITCH 270
-#define CONTINUE 271
-#define BREAK 272
-#define RETURN 273
-#define PRINTF 274
-#define DEFAULT 275
-#define CASE 276
-#define GTR_EQ 277
-#define LESS_EQ 278
-#define NOT_EQ 279
-#define AND 280
-#define OR 281
-#define NOT 282
-#define EQ_EQ 283
-#define LESS 284
-#define GTR 285
-#define NEWLINE 286
-#define UNK 287
-#define END_OF_FILE 288
-#define ID 289
-#define INT_CONST 290
-#define FLOAT_CONST 291
-#define CHAR_CONST 292
-#define FUNC 293
+#define ARR2 258
+#define ARR_E 259
+#define INT 260
+#define FLOAT 261
+#define CHAR 262
+#define VOID 263
+#define IF 264
+#define ELSE 265
+#define WHILE 266
+#define FOR 267
+#define SWITCH 268
+#define CONTINUE 269
+#define BREAK 270
+#define RETURN 271
+#define PRINTF 272
+#define DEFAULT 273
+#define CASE 274
+#define GTR_EQ 275
+#define LESS_EQ 276
+#define NOT_EQ 277
+#define AND 278
+#define OR 279
+#define NOT 280
+#define EQ_EQ 281
+#define LESS 282
+#define GTR 283
+#define NEWLINE 284
+#define UNK 285
+#define END_OF_FILE 286
+#define ID 287
+#define INT_CONST 288
+#define FLOAT_CONST 289
+#define CHAR_CONST 290
+#define FUNC 291
+#define STRING 292
+#define ARR 293
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 15 "semanticAnalysis.y"
+#line 17 "semanticAnalysis.y"
 
     struct{
         char *lexeme;
         float val;
     }t;
 
-#line 222 "y.tab.c"
+#line 224 "y.tab.c"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -245,85 +247,82 @@ enum yysymbol_kind_t
   YYSYMBOL_4_ = 4,                         /* '-'  */
   YYSYMBOL_5_ = 5,                         /* '*'  */
   YYSYMBOL_6_ = 6,                         /* '/'  */
-  YYSYMBOL_ARR = 7,                        /* ARR  */
-  YYSYMBOL_ARR2 = 8,                       /* ARR2  */
-  YYSYMBOL_ARR_E = 9,                      /* ARR_E  */
-  YYSYMBOL_STRING = 10,                    /* STRING  */
-  YYSYMBOL_INT = 11,                       /* INT  */
-  YYSYMBOL_FLOAT = 12,                     /* FLOAT  */
-  YYSYMBOL_CHAR = 13,                      /* CHAR  */
-  YYSYMBOL_VOID = 14,                      /* VOID  */
-  YYSYMBOL_IF = 15,                        /* IF  */
-  YYSYMBOL_ELSE = 16,                      /* ELSE  */
-  YYSYMBOL_WHILE = 17,                     /* WHILE  */
-  YYSYMBOL_FOR = 18,                       /* FOR  */
-  YYSYMBOL_SWITCH = 19,                    /* SWITCH  */
-  YYSYMBOL_CONTINUE = 20,                  /* CONTINUE  */
-  YYSYMBOL_BREAK = 21,                     /* BREAK  */
-  YYSYMBOL_RETURN = 22,                    /* RETURN  */
-  YYSYMBOL_PRINTF = 23,                    /* PRINTF  */
-  YYSYMBOL_DEFAULT = 24,                   /* DEFAULT  */
-  YYSYMBOL_CASE = 25,                      /* CASE  */
-  YYSYMBOL_GTR_EQ = 26,                    /* GTR_EQ  */
-  YYSYMBOL_LESS_EQ = 27,                   /* LESS_EQ  */
-  YYSYMBOL_NOT_EQ = 28,                    /* NOT_EQ  */
-  YYSYMBOL_AND = 29,                       /* AND  */
-  YYSYMBOL_OR = 30,                        /* OR  */
-  YYSYMBOL_NOT = 31,                       /* NOT  */
-  YYSYMBOL_EQ_EQ = 32,                     /* EQ_EQ  */
-  YYSYMBOL_LESS = 33,                      /* LESS  */
-  YYSYMBOL_GTR = 34,                       /* GTR  */
-  YYSYMBOL_NEWLINE = 35,                   /* NEWLINE  */
-  YYSYMBOL_UNK = 36,                       /* UNK  */
-  YYSYMBOL_END_OF_FILE = 37,               /* END_OF_FILE  */
-  YYSYMBOL_ID = 38,                        /* ID  */
-  YYSYMBOL_INT_CONST = 39,                 /* INT_CONST  */
-  YYSYMBOL_FLOAT_CONST = 40,               /* FLOAT_CONST  */
-  YYSYMBOL_CHAR_CONST = 41,                /* CHAR_CONST  */
-  YYSYMBOL_FUNC = 42,                      /* FUNC  */
+  YYSYMBOL_ARR2 = 7,                       /* ARR2  */
+  YYSYMBOL_ARR_E = 8,                      /* ARR_E  */
+  YYSYMBOL_INT = 9,                        /* INT  */
+  YYSYMBOL_FLOAT = 10,                     /* FLOAT  */
+  YYSYMBOL_CHAR = 11,                      /* CHAR  */
+  YYSYMBOL_VOID = 12,                      /* VOID  */
+  YYSYMBOL_IF = 13,                        /* IF  */
+  YYSYMBOL_ELSE = 14,                      /* ELSE  */
+  YYSYMBOL_WHILE = 15,                     /* WHILE  */
+  YYSYMBOL_FOR = 16,                       /* FOR  */
+  YYSYMBOL_SWITCH = 17,                    /* SWITCH  */
+  YYSYMBOL_CONTINUE = 18,                  /* CONTINUE  */
+  YYSYMBOL_BREAK = 19,                     /* BREAK  */
+  YYSYMBOL_RETURN = 20,                    /* RETURN  */
+  YYSYMBOL_PRINTF = 21,                    /* PRINTF  */
+  YYSYMBOL_DEFAULT = 22,                   /* DEFAULT  */
+  YYSYMBOL_CASE = 23,                      /* CASE  */
+  YYSYMBOL_GTR_EQ = 24,                    /* GTR_EQ  */
+  YYSYMBOL_LESS_EQ = 25,                   /* LESS_EQ  */
+  YYSYMBOL_NOT_EQ = 26,                    /* NOT_EQ  */
+  YYSYMBOL_AND = 27,                       /* AND  */
+  YYSYMBOL_OR = 28,                        /* OR  */
+  YYSYMBOL_NOT = 29,                       /* NOT  */
+  YYSYMBOL_EQ_EQ = 30,                     /* EQ_EQ  */
+  YYSYMBOL_LESS = 31,                      /* LESS  */
+  YYSYMBOL_GTR = 32,                       /* GTR  */
+  YYSYMBOL_NEWLINE = 33,                   /* NEWLINE  */
+  YYSYMBOL_UNK = 34,                       /* UNK  */
+  YYSYMBOL_END_OF_FILE = 35,               /* END_OF_FILE  */
+  YYSYMBOL_ID = 36,                        /* ID  */
+  YYSYMBOL_INT_CONST = 37,                 /* INT_CONST  */
+  YYSYMBOL_FLOAT_CONST = 38,               /* FLOAT_CONST  */
+  YYSYMBOL_CHAR_CONST = 39,                /* CHAR_CONST  */
+  YYSYMBOL_FUNC = 40,                      /* FUNC  */
+  YYSYMBOL_STRING = 41,                    /* STRING  */
+  YYSYMBOL_ARR = 42,                       /* ARR  */
   YYSYMBOL_43_ = 43,                       /* '('  */
   YYSYMBOL_44_ = 44,                       /* ')'  */
   YYSYMBOL_45_ = 45,                       /* '{'  */
   YYSYMBOL_46_ = 46,                       /* '}'  */
   YYSYMBOL_47_ = 47,                       /* ','  */
   YYSYMBOL_48_ = 48,                       /* ';'  */
-  YYSYMBOL_49_ = 49,                       /* '='  */
-  YYSYMBOL_YYACCEPT = 50,                  /* $accept  */
-  YYSYMBOL_S = 51,                         /* S  */
-  YYSYMBOL_BEGIN = 52,                     /* BEGIN  */
-  YYSYMBOL_TYPE = 53,                      /* TYPE  */
-  YYSYMBOL_FUNC_DECL = 54,                 /* FUNC_DECL  */
-  YYSYMBOL_55_1 = 55,                      /* $@1  */
-  YYSYMBOL_56_2 = 56,                      /* $@2  */
-  YYSYMBOL_PARA_LIST = 57,                 /* PARA_LIST  */
-  YYSYMBOL_STMT_LIST = 58,                 /* STMT_LIST  */
-  YYSYMBOL_STMT = 59,                      /* STMT  */
-  YYSYMBOL_BRK_CNT = 60,                   /* BRK_CNT  */
-  YYSYMBOL_FOR_STMT = 61,                  /* FOR_STMT  */
-  YYSYMBOL_WHILE_STMT = 62,                /* WHILE_STMT  */
-  YYSYMBOL_EXPR = 63,                      /* EXPR  */
-  YYSYMBOL_COMP_OP = 64,                   /* COMP_OP  */
-  YYSYMBOL_TERM = 65,                      /* TERM  */
-  YYSYMBOL_FACTOR = 66,                    /* FACTOR  */
-  YYSYMBOL_ASSGN = 67,                     /* ASSGN  */
-  YYSYMBOL_ASSGN_TAIL = 68,                /* ASSGN_TAIL  */
-  YYSYMBOL_DECL = 69,                      /* DECL  */
-  YYSYMBOL_DECL_TAIL = 70,                 /* DECL_TAIL  */
-  YYSYMBOL_IF_STMT = 71,                   /* IF_STMT  */
-  YYSYMBOL_MAT = 72,                       /* MAT  */
-  YYSYMBOL_UNMAT = 73,                     /* UNMAT  */
-  YYSYMBOL_PRINT = 74,                     /* PRINT  */
-  YYSYMBOL_VAR_LIST = 75,                  /* VAR_LIST  */
-  YYSYMBOL_RTRN_STMT = 76,                 /* RTRN_STMT  */
-  YYSYMBOL_CONST = 77,                     /* CONST  */
-  YYSYMBOL_FUNC_CALL = 78,                 /* FUNC_CALL  */
-  YYSYMBOL_ARR_DECL = 79,                  /* ARR_DECL  */
-  YYSYMBOL_CONST_LIST = 80,                /* CONST_LIST  */
-  YYSYMBOL_MIXED_LIST = 81,                /* MIXED_LIST  */
-  YYSYMBOL_CONST_LIST2 = 82,               /* CONST_LIST2  */
-  YYSYMBOL_INT_LIST = 83,                  /* INT_LIST  */
-  YYSYMBOL_FLOAT_LIST = 84,                /* FLOAT_LIST  */
-  YYSYMBOL_CHAR_LIST = 85                  /* CHAR_LIST  */
+  YYSYMBOL_49_ = 49,                       /* ':'  */
+  YYSYMBOL_50_ = 50,                       /* '='  */
+  YYSYMBOL_51_ = 51,                       /* '['  */
+  YYSYMBOL_52_ = 52,                       /* ']'  */
+  YYSYMBOL_YYACCEPT = 53,                  /* $accept  */
+  YYSYMBOL_S = 54,                         /* S  */
+  YYSYMBOL_BEGIN = 55,                     /* BEGIN  */
+  YYSYMBOL_TYPE = 56,                      /* TYPE  */
+  YYSYMBOL_FUNC_DECL = 57,                 /* FUNC_DECL  */
+  YYSYMBOL_58_1 = 58,                      /* $@1  */
+  YYSYMBOL_59_2 = 59,                      /* $@2  */
+  YYSYMBOL_PARA_LIST = 60,                 /* PARA_LIST  */
+  YYSYMBOL_STMT_LIST = 61,                 /* STMT_LIST  */
+  YYSYMBOL_STMT = 62,                      /* STMT  */
+  YYSYMBOL_SWITCH_STMT = 63,               /* SWITCH_STMT  */
+  YYSYMBOL_CASE_STMT = 64,                 /* CASE_STMT  */
+  YYSYMBOL_BRK_CNT = 65,                   /* BRK_CNT  */
+  YYSYMBOL_FOR_STMT = 66,                  /* FOR_STMT  */
+  YYSYMBOL_WHILE_STMT = 67,                /* WHILE_STMT  */
+  YYSYMBOL_EXPR = 68,                      /* EXPR  */
+  YYSYMBOL_COMP_OP = 69,                   /* COMP_OP  */
+  YYSYMBOL_TERM = 70,                      /* TERM  */
+  YYSYMBOL_FACTOR = 71,                    /* FACTOR  */
+  YYSYMBOL_ASSGN = 72,                     /* ASSGN  */
+  YYSYMBOL_DECL = 73,                      /* DECL  */
+  YYSYMBOL_DECL_TAIL = 74,                 /* DECL_TAIL  */
+  YYSYMBOL_IF_STMT = 75,                   /* IF_STMT  */
+  YYSYMBOL_PRINT = 76,                     /* PRINT  */
+  YYSYMBOL_VAR_LIST = 77,                  /* VAR_LIST  */
+  YYSYMBOL_RTRN_STMT = 78,                 /* RTRN_STMT  */
+  YYSYMBOL_CONST = 79,                     /* CONST  */
+  YYSYMBOL_FUNC_CALL = 80,                 /* FUNC_CALL  */
+  YYSYMBOL_ARR_DECL = 81,                  /* ARR_DECL  */
+  YYSYMBOL_MIXED_LIST = 82                 /* MIXED_LIST  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -651,16 +650,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  9
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   299
+#define YYLAST   361
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  50
+#define YYNTOKENS  53
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  36
+#define YYNNTS  30
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  100
+#define YYNRULES  96
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  229
+#define YYNSTATES  240
 
 /* YYMAXUTOK -- Last valid token kind.  */
 #define YYMAXUTOK   293
@@ -682,11 +681,11 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
       43,    44,     5,     3,    47,     4,     2,     6,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,    48,
-       2,    49,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,    49,    48,
+       2,    50,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,    51,     2,    52,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,    45,     2,    46,     2,     2,     2,     2,
@@ -711,19 +710,18 @@ static const yytype_int8 yytranslate[] =
 
 #if YYDEBUG
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
-static const yytype_uint8 yyrline[] =
+static const yytype_int16 yyrline[] =
 {
-       0,    31,    31,    33,    34,    36,    37,    38,    39,    41,
-      41,    42,    42,    44,    45,    47,    48,    49,    50,    52,
-      52,    52,    52,    52,    52,    52,    52,    52,    52,    53,
-      54,    56,    56,    58,    59,    60,    62,    64,    72,    73,
-      73,    73,    73,    73,    73,    73,    73,    74,    75,    76,
-      77,    78,    80,    81,    99,   104,   105,   105,   108,   109,
-     111,   112,   113,   115,   115,   117,   119,   121,   122,   124,
-     125,   127,   128,   129,   131,   132,   133,   135,   155,   169,
-     170,   189,   190,   191,   192,   193,   195,   195,   195,   197,
-     198,   199,   200,   202,   203,   205,   205,   207,   207,   209,
-     209
+       0,    33,    33,    35,    36,    38,    39,    40,    41,    43,
+      43,    44,    44,    46,    47,    49,    50,    51,    52,    54,
+      54,    54,    54,    54,    54,    54,    54,    54,    55,    56,
+      57,    59,    61,    62,    64,    64,    66,    67,    68,    70,
+      72,    80,    81,    81,    81,    81,    81,    81,    81,    81,
+      82,    83,    84,    85,    86,    88,    89,   103,   108,   109,
+     110,   111,   112,   113,   114,   115,   117,   118,   119,   120,
+     121,   131,   132,   134,   135,   173,   174,   176,   177,   178,
+     180,   181,   182,   183,   184,   186,   206,   220,   221,   237,
+     250,   265,   268,   273,   274,   275,   276
 };
 #endif
 
@@ -740,17 +738,17 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
 static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "'+'", "'-'", "'*'",
-  "'/'", "ARR", "ARR2", "ARR_E", "STRING", "INT", "FLOAT", "CHAR", "VOID",
-  "IF", "ELSE", "WHILE", "FOR", "SWITCH", "CONTINUE", "BREAK", "RETURN",
-  "PRINTF", "DEFAULT", "CASE", "GTR_EQ", "LESS_EQ", "NOT_EQ", "AND", "OR",
-  "NOT", "EQ_EQ", "LESS", "GTR", "NEWLINE", "UNK", "END_OF_FILE", "ID",
-  "INT_CONST", "FLOAT_CONST", "CHAR_CONST", "FUNC", "'('", "')'", "'{'",
-  "'}'", "','", "';'", "'='", "$accept", "S", "BEGIN", "TYPE", "FUNC_DECL",
-  "$@1", "$@2", "PARA_LIST", "STMT_LIST", "STMT", "BRK_CNT", "FOR_STMT",
-  "WHILE_STMT", "EXPR", "COMP_OP", "TERM", "FACTOR", "ASSGN", "ASSGN_TAIL",
-  "DECL", "DECL_TAIL", "IF_STMT", "MAT", "UNMAT", "PRINT", "VAR_LIST",
-  "RTRN_STMT", "CONST", "FUNC_CALL", "ARR_DECL", "CONST_LIST",
-  "MIXED_LIST", "CONST_LIST2", "INT_LIST", "FLOAT_LIST", "CHAR_LIST", YY_NULLPTR
+  "'/'", "ARR2", "ARR_E", "INT", "FLOAT", "CHAR", "VOID", "IF", "ELSE",
+  "WHILE", "FOR", "SWITCH", "CONTINUE", "BREAK", "RETURN", "PRINTF",
+  "DEFAULT", "CASE", "GTR_EQ", "LESS_EQ", "NOT_EQ", "AND", "OR", "NOT",
+  "EQ_EQ", "LESS", "GTR", "NEWLINE", "UNK", "END_OF_FILE", "ID",
+  "INT_CONST", "FLOAT_CONST", "CHAR_CONST", "FUNC", "STRING", "ARR", "'('",
+  "')'", "'{'", "'}'", "','", "';'", "':'", "'='", "'['", "']'", "$accept",
+  "S", "BEGIN", "TYPE", "FUNC_DECL", "$@1", "$@2", "PARA_LIST",
+  "STMT_LIST", "STMT", "SWITCH_STMT", "CASE_STMT", "BRK_CNT", "FOR_STMT",
+  "WHILE_STMT", "EXPR", "COMP_OP", "TERM", "FACTOR", "ASSGN", "DECL",
+  "DECL_TAIL", "IF_STMT", "PRINT", "VAR_LIST", "RTRN_STMT", "CONST",
+  "FUNC_CALL", "ARR_DECL", "MIXED_LIST", YY_NULLPTR
 };
 
 static const char *
@@ -760,7 +758,7 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 }
 #endif
 
-#define YYPACT_NINF (-141)
+#define YYPACT_NINF (-135)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -774,29 +772,30 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int16 yypact[] =
 {
-     205,  -141,  -141,  -141,  -141,     8,  -141,   -26,   205,  -141,
-     -20,  -141,   205,   -10,     5,    15,  -141,    24,   205,    50,
-      18,    61,    43,    64,    71,    74,    94,   100,    82,   109,
-     118,  -141,  -141,  -141,   129,   172,    18,  -141,    12,   128,
-      18,  -141,  -141,  -141,   168,   217,  -141,   125,   142,  -141,
-    -141,  -141,  -141,  -141,  -141,  -141,  -141,  -141,    18,   172,
-     172,    -1,  -141,  -141,   151,  -141,   184,   204,   172,     4,
-    -141,   127,   187,    86,   102,   185,    42,  -141,  -141,  -141,
-    -141,  -141,  -141,  -141,  -141,  -141,  -141,   172,   172,   172,
-     172,   172,  -141,  -141,   189,   136,   159,   118,   172,   198,
-     190,   191,  -141,  -141,    21,    99,   193,   194,   196,   197,
-    -141,    18,  -141,   192,  -141,   199,   200,   208,   166,  -141,
-     217,  -141,  -141,  -141,  -141,  -141,   202,   203,    44,    46,
-     172,   172,   201,   212,   213,  -141,   186,  -141,   186,   206,
-    -141,    14,   207,    14,    51,   210,   111,    18,    18,   218,
-     172,    53,    76,  -141,   211,   215,   214,  -141,  -141,  -141,
-     219,   220,   221,   209,  -141,  -141,  -141,    14,   216,   223,
-     172,  -141,   138,  -141,   224,   225,   228,   218,   218,   212,
-     226,   172,   222,   233,   234,   229,   230,   231,   232,   111,
-     235,   237,   241,  -141,   239,   238,   242,  -141,  -141,    99,
-    -141,  -141,  -141,  -141,   240,  -141,  -141,  -141,  -141,   243,
-     244,    18,   245,   247,  -141,   207,  -141,    18,   248,    18,
-      18,  -141,   249,  -141,   250,   251,  -141,  -141,  -141
+     128,  -135,  -135,  -135,  -135,    13,  -135,   -25,   128,  -135,
+      -1,  -135,   128,   -13,    23,    22,  -135,    41,   128,    24,
+      34,    48,    42,    50,    51,    55,    68,    70,    74,   -20,
+      80,    77,  -135,  -135,  -135,    85,    91,   249,    34,  -135,
+     -30,    87,    34,  -135,  -135,  -135,  -135,   133,   214,  -135,
+     104,   106,  -135,  -135,  -135,  -135,  -135,  -135,  -135,    34,
+     249,   249,    93,   120,  -135,  -135,   107,   115,  -135,   121,
+     127,   231,    -5,   145,  -135,    82,   137,   -21,   135,  -135,
+    -135,  -135,  -135,  -135,  -135,  -135,  -135,  -135,  -135,  -135,
+     257,   249,   249,   249,   249,   249,  -135,  -135,   157,   222,
+     232,   177,   249,   171,   189,   203,   217,  -135,   228,  -135,
+     -17,   229,   174,   235,   227,   242,   246,   245,  -135,    34,
+     171,   241,   261,  -135,   214,  -135,  -135,  -135,  -135,  -135,
+     260,   263,   249,   119,    28,   249,   249,   264,   254,   262,
+     275,    21,   257,   265,  -135,   265,   266,   -10,  -135,  -135,
+     269,   184,   267,    34,    34,   257,   249,   146,   165,    39,
+     270,  -135,   268,   272,   274,   273,  -135,  -135,  -135,  -135,
+     249,   276,    53,   171,    32,   277,   278,   281,   257,   257,
+     271,   289,   282,   290,   275,   283,  -135,   284,   198,   285,
+     286,   291,  -135,  -135,   292,   304,  -135,   288,   294,   295,
+      34,   287,  -135,   293,  -135,  -135,  -135,   257,   280,  -135,
+     296,   297,   298,    34,   301,   302,  -135,    34,  -135,  -135,
+     249,  -135,   300,    34,   305,    34,    34,    39,   208,  -135,
+     306,  -135,   307,   308,  -135,   257,  -135,  -135,  -135,  -135
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -807,44 +806,43 @@ static const yytype_int8 yydefact[] =
        0,     5,     6,     7,     8,     0,     2,     0,     4,     1,
        0,     3,    11,     0,     0,     9,    14,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-      53,    74,    75,    76,     0,     0,     0,    30,     0,     0,
-      16,    22,    24,    26,    25,    38,    51,     0,     0,    27,
-      63,    64,    19,    20,    54,    21,    23,    13,     0,     0,
-       0,     0,    31,    32,     0,    73,     0,     0,     0,     0,
-      53,     0,     0,     0,     0,     0,    62,    12,    15,    41,
-      42,    43,    44,    45,    46,    39,    40,     0,     0,     0,
-       0,     0,    28,    29,     0,     0,     0,     0,     0,     0,
-       0,     0,    71,    72,     0,    57,    91,     0,    92,     0,
-      52,    17,    81,     0,    84,     0,     0,     0,     0,    59,
-      37,    47,    48,    49,    50,    10,     0,     0,     0,    62,
-       0,     0,     0,     0,     0,    55,     0,    79,     0,     0,
-      18,     0,     0,     0,    62,     0,    62,     0,     0,     0,
-       0,     0,     0,    67,    69,     0,     0,    89,    90,    80,
-      95,    97,    99,     0,    86,    87,    88,     0,     0,     0,
-       0,    60,     0,    58,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,    62,
-       0,     0,    65,    36,     0,     0,     0,    70,    68,    57,
-      96,    98,   100,    82,    93,    85,    83,    61,    78,     0,
-       0,     0,     0,     0,    56,     0,    77,     0,     0,     0,
-       0,    94,     0,    35,     0,     0,    66,    33,    34
+       0,    56,    80,    81,    82,     0,     0,     0,     0,    30,
+       0,     0,    16,    28,    22,    24,    25,    59,    41,    54,
+       0,     0,    26,    19,    20,    57,    21,    23,    13,     0,
+       0,     0,     0,     0,    34,    35,     0,     0,    79,     0,
+       0,     0,     0,     0,    56,     0,     0,    69,     0,    66,
+      12,    15,    44,    45,    46,    47,    48,    49,    42,    43,
+       0,     0,     0,     0,     0,     0,    27,    29,     0,     0,
+       0,    56,     0,     0,     0,     0,     0,    77,     0,    78,
+       0,     0,    60,    95,     0,    96,     0,     0,    55,    17,
+       0,     0,     0,    61,    40,    50,    51,    52,    53,    10,
+       0,     0,     0,     0,    69,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,    87,     0,     0,    83,    18,    70,
+       0,    67,     0,     0,     0,     0,     0,     0,     0,     0,
+      83,    73,    75,     0,     0,     0,    58,    93,    94,    88,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,    89,     0,    63,     0,
+       0,     0,    68,    91,     0,    71,    39,     0,     0,     0,
+       0,     0,    31,     0,    76,    74,    90,     0,    84,    86,
+       0,     0,     0,     0,     0,     0,    33,     0,    84,    62,
+       0,    85,     0,     0,     0,     0,     0,     0,    65,    92,
+       0,    38,     0,     0,    32,     0,    72,    36,    37,    64
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int16 yypgoto[] =
 {
-    -141,  -141,   252,     6,  -141,  -141,  -141,  -141,   -36,  -141,
-    -141,  -141,  -141,   -34,  -141,   177,   140,   -59,    66,   227,
-    -137,  -141,  -141,  -141,  -141,   106,  -141,   -23,  -141,  -141,
-    -140,  -121,    63,   116,   110,   115
+    -135,  -135,   332,     2,  -135,  -135,  -135,  -135,   -38,  -135,
+    -135,   114,  -135,  -135,  -135,   -36,  -135,   251,   149,   -54,
+     299,  -117,  -135,  -135,   166,  -135,   -24,  -135,  -135,  -134
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_uint8 yydefgoto[] =
 {
-       0,     5,     6,    38,     8,    19,    14,    15,    39,    40,
-      41,    42,    43,    44,    87,    45,    46,    47,   135,    48,
-     119,    49,    50,    51,    52,   155,    53,    54,    55,    56,
-     163,   109,   168,   164,   165,   166
+       0,     5,     6,    40,     8,    19,    14,    15,    41,    42,
+      43,   182,    44,    45,    46,    47,    91,    48,    49,    50,
+      51,    79,    52,    53,   163,    54,    55,    56,    57,   116
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -852,115 +850,129 @@ static const yytype_uint8 yydefgoto[] =
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_uint8 yytable[] =
 {
-      72,    71,   100,   169,    78,    66,     7,   171,     9,   173,
-       1,     2,     3,     4,     7,   157,    10,   158,    13,    73,
-      74,    75,    94,    12,    21,    95,    96,   186,    16,     1,
-       2,     3,     4,    23,   105,    24,    25,    97,    26,    27,
-      28,    29,   106,    31,    32,    33,   108,    98,   107,    17,
-      76,   191,   207,   160,   161,   162,    30,    31,    32,    33,
-      34,    35,    18,    36,   128,   132,    37,    99,   133,    20,
-      79,    80,    81,    82,    83,   140,    84,    85,    86,    79,
-      80,    81,    82,    83,   146,    84,    85,    86,    58,   117,
-     176,   118,   149,   117,    22,   150,   151,   152,   117,    57,
-     170,   177,    79,    80,    81,    82,    83,    59,    84,    85,
-      86,   174,   175,   108,    60,   108,   146,    61,   195,   196,
-      64,    31,    32,    33,   178,    79,    80,    81,    82,    83,
-      65,    84,    85,    86,   112,   113,   189,    79,    80,    81,
-      82,    83,    62,    84,    85,    86,   134,   199,    63,   108,
-     114,   115,    67,    79,    80,    81,    82,    83,   117,    84,
-      85,    86,    79,    80,    81,    82,    83,    68,    84,    85,
-      86,   110,    69,    92,    77,   218,   106,    31,    32,    33,
-     126,   222,   190,   224,   225,    79,    80,    81,    82,    83,
-      93,    84,    85,    86,    79,    80,    81,    82,    83,   102,
-      84,    85,    86,   127,    70,    31,    32,    33,   145,    35,
-      70,    31,    32,    33,   104,    35,     1,     2,     3,     4,
-      88,    89,    90,    91,   106,    31,    32,    33,   121,   122,
-     123,   124,   103,   111,   116,   125,   129,   141,   130,   131,
-     136,   139,   137,   138,   142,   143,   144,   147,   148,   153,
-     154,   156,   167,   172,   159,   185,    97,   210,   179,   180,
-      11,   160,   187,   181,   120,   214,   182,   183,   184,   188,
-     192,   193,   194,   161,   198,   162,   204,   203,   221,   205,
-     206,   209,   212,   208,   211,   197,   213,   215,   101,   217,
-     219,   216,   220,   201,   223,   226,   227,   228,   200,   202
+      76,    75,     7,   149,    81,    69,    77,   165,   104,   167,
+       7,   168,    78,     9,    13,    10,    66,    32,    33,    34,
+      21,    98,    67,    16,    99,   100,   120,   139,    68,   121,
+     140,   113,    32,    33,    34,   112,   123,    67,   191,   114,
+     170,   171,    12,     1,     2,     3,     4,    23,   115,    24,
+      25,    26,    27,    28,    29,    30,   192,   113,    32,    33,
+      34,   180,   181,    67,   103,   164,   133,    17,    22,    18,
+      31,    32,    33,    34,    35,   120,    36,    37,   156,    38,
+     193,   148,    39,   194,    58,   151,    20,    59,   166,   113,
+      32,    33,    34,    60,    61,    67,   112,   190,    62,   157,
+     158,   177,     1,     2,     3,     4,    82,    83,    84,    85,
+      86,    63,    87,    88,    89,   175,   176,   115,    64,   115,
+     151,   115,    65,    70,   198,   199,   118,    71,    72,   101,
+      32,    33,    34,    80,   188,    36,    37,     1,     2,     3,
+       4,   102,    73,    82,    83,    84,    85,    86,   115,    87,
+      88,    89,    96,   219,    97,   107,   106,    82,    83,    84,
+      85,    86,   216,    87,    88,    89,   108,   155,   110,   109,
+      82,    83,    84,    85,    86,   224,    87,    88,    89,   227,
+      90,   239,   117,   119,   228,   230,   122,   232,   233,    82,
+      83,    84,    85,    86,   178,    87,    88,    89,    82,    83,
+      84,    85,    86,   129,    87,    88,    89,   134,    82,    83,
+      84,    85,    86,   179,    87,    88,    89,    92,    93,    94,
+      95,   142,    82,    83,    84,    85,    86,   132,    87,    88,
+      89,   173,    82,    83,    84,    85,    86,   135,    87,    88,
+      89,   125,   126,   127,   128,   207,    82,    83,    84,    85,
+      86,   136,    87,    88,    89,   235,    82,    83,    84,    85,
+      86,   137,    87,    88,    89,   138,   130,    74,    32,    33,
+      34,   111,   141,    67,    37,   144,   131,    74,    32,    33,
+      34,   150,   143,    67,    37,    74,    32,    33,    34,   145,
+     146,    67,    37,   101,    32,    33,    34,   147,   152,    36,
+      37,   113,    32,    33,    34,   153,   160,    67,   154,   159,
+     161,   162,   172,   189,   169,   184,   185,   187,   212,   174,
+     200,   183,   186,   195,   196,   197,   201,   203,   202,   211,
+     220,   205,   206,   213,   209,   210,   217,   208,   214,   215,
+      11,   234,   124,   223,   221,   218,   225,   226,   229,   222,
+     204,   231,   236,   237,   238,     0,     0,     0,     0,     0,
+       0,   105
 };
 
-static const yytype_uint8 yycheck[] =
+static const yytype_int16 yycheck[] =
 {
-      36,    35,    61,   143,    40,    28,     0,   144,     0,   146,
-      11,    12,    13,    14,     8,   136,    42,   138,    12,     7,
-       8,     9,    58,    43,    18,    59,    60,   167,    38,    11,
-      12,    13,    14,    15,    68,    17,    18,    38,    20,    21,
-      22,    23,    38,    39,    40,    41,    69,    48,    44,    44,
-      38,   172,   189,    39,    40,    41,    38,    39,    40,    41,
-      42,    43,    47,    45,    98,    44,    48,    61,    47,    45,
-      26,    27,    28,    29,    30,   111,    32,    33,    34,    26,
-      27,    28,    29,    30,   118,    32,    33,    34,    45,    47,
-     149,    49,    48,    47,    44,    49,   130,   131,    47,    38,
-      49,    48,    26,    27,    28,    29,    30,    43,    32,    33,
-      34,   147,   148,   136,    43,   138,   150,    43,   177,   178,
-      38,    39,    40,    41,    48,    26,    27,    28,    29,    30,
-      48,    32,    33,    34,    48,    49,   170,    26,    27,    28,
-      29,    30,    48,    32,    33,    34,    47,   181,    48,   172,
-      48,    49,    43,    26,    27,    28,    29,    30,    47,    32,
-      33,    34,    26,    27,    28,    29,    30,    49,    32,    33,
-      34,    44,    43,    48,    46,   211,    38,    39,    40,    41,
-      44,   217,    44,   219,   220,    26,    27,    28,    29,    30,
-      48,    32,    33,    34,    26,    27,    28,    29,    30,    48,
-      32,    33,    34,    44,    38,    39,    40,    41,    42,    43,
-      38,    39,    40,    41,    10,    43,    11,    12,    13,    14,
-       3,     4,     5,     6,    38,    39,    40,    41,    88,    89,
-      90,    91,    48,    46,    49,    46,    38,    45,    48,    48,
-      47,    44,    48,    47,    45,    45,    38,    45,    45,    48,
-      38,    38,    45,    43,    48,    46,    38,    16,    47,    44,
-       8,    39,    46,    49,    87,   199,    47,    47,    47,    46,
-      46,    46,    44,    40,    48,    41,    46,    48,   215,    48,
-      48,    44,    44,    48,    45,   179,    44,    47,    61,    45,
-      45,    48,    45,   183,    46,    46,    46,    46,   182,   184
+      38,    37,     0,   120,    42,    29,    36,   141,    62,   143,
+       8,   145,    42,     0,    12,    40,    36,    37,    38,    39,
+      18,    59,    42,    36,    60,    61,    47,    44,    48,    50,
+      47,    36,    37,    38,    39,    71,    90,    42,   172,    44,
+      50,    51,    43,     9,    10,    11,    12,    13,    72,    15,
+      16,    17,    18,    19,    20,    21,   173,    36,    37,    38,
+      39,    22,    23,    42,    62,    44,   102,    44,    44,    47,
+      36,    37,    38,    39,    40,    47,    42,    43,    50,    45,
+      48,   119,    48,    51,    36,   121,    45,    45,   142,    36,
+      37,    38,    39,    43,    43,    42,   132,    44,    43,   135,
+     136,   155,     9,    10,    11,    12,    24,    25,    26,    27,
+      28,    43,    30,    31,    32,   153,   154,   141,    48,   143,
+     156,   145,    48,    43,   178,   179,    44,    50,    43,    36,
+      37,    38,    39,    46,   170,    42,    43,     9,    10,    11,
+      12,    48,    51,    24,    25,    26,    27,    28,   172,    30,
+      31,    32,    48,   207,    48,    48,    36,    24,    25,    26,
+      27,    28,   200,    30,    31,    32,    51,    48,    41,    48,
+      24,    25,    26,    27,    28,   213,    30,    31,    32,   217,
+      47,   235,    37,    46,   220,   223,    51,   225,   226,    24,
+      25,    26,    27,    28,    48,    30,    31,    32,    24,    25,
+      26,    27,    28,    46,    30,    31,    32,    36,    24,    25,
+      26,    27,    28,    48,    30,    31,    32,     3,     4,     5,
+       6,    47,    24,    25,    26,    27,    28,    50,    30,    31,
+      32,    47,    24,    25,    26,    27,    28,    48,    30,    31,
+      32,    92,    93,    94,    95,    47,    24,    25,    26,    27,
+      28,    48,    30,    31,    32,    47,    24,    25,    26,    27,
+      28,    44,    30,    31,    32,    37,    44,    36,    37,    38,
+      39,    40,    43,    42,    43,    48,    44,    36,    37,    38,
+      39,    40,    47,    42,    43,    36,    37,    38,    39,    47,
+      44,    42,    43,    36,    37,    38,    39,    52,    37,    42,
+      43,    36,    37,    38,    39,    45,    52,    42,    45,    45,
+      48,    36,    43,    37,    48,    47,    44,    44,    14,    52,
+      49,    51,    48,    46,    46,    44,    37,    37,    46,    37,
+      50,    48,    48,    45,    48,    44,    49,    52,    44,    44,
+       8,   227,    91,    45,    48,    52,    45,    45,    48,    52,
+     184,    46,    46,    46,    46,    -1,    -1,    -1,    -1,    -1,
+      -1,    62
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,    11,    12,    13,    14,    51,    52,    53,    54,     0,
-      42,    52,    43,    53,    56,    57,    38,    44,    47,    55,
-      45,    53,    44,    15,    17,    18,    20,    21,    22,    23,
-      38,    39,    40,    41,    42,    43,    45,    48,    53,    58,
-      59,    60,    61,    62,    63,    65,    66,    67,    69,    71,
-      72,    73,    74,    76,    77,    78,    79,    38,    45,    43,
-      43,    43,    48,    48,    38,    48,    77,    43,    49,    43,
-      38,    63,    58,     7,     8,     9,    38,    46,    58,    26,
-      27,    28,    29,    30,    32,    33,    34,    64,     3,     4,
-       5,     6,    48,    48,    58,    63,    63,    38,    48,    53,
-      67,    69,    48,    48,    10,    63,    38,    44,    77,    81,
-      44,    46,    48,    49,    48,    49,    49,    47,    49,    70,
-      65,    66,    66,    66,    66,    46,    44,    44,    63,    38,
-      48,    48,    44,    47,    47,    68,    47,    48,    47,    44,
-      58,    45,    45,    45,    38,    42,    63,    45,    45,    48,
-      49,    63,    63,    48,    38,    75,    38,    81,    81,    48,
-      39,    40,    41,    80,    83,    84,    85,    45,    82,    80,
-      49,    70,    43,    70,    58,    58,    67,    48,    48,    47,
-      44,    49,    47,    47,    47,    46,    80,    46,    46,    63,
-      44,    81,    46,    46,    44,    67,    67,    75,    48,    63,
-      83,    84,    85,    48,    46,    48,    48,    70,    48,    44,
-      16,    45,    44,    44,    68,    47,    48,    45,    58,    45,
-      45,    82,    58,    46,    58,    58,    46,    46,    46
+       0,     9,    10,    11,    12,    54,    55,    56,    57,     0,
+      40,    55,    43,    56,    59,    60,    36,    44,    47,    58,
+      45,    56,    44,    13,    15,    16,    17,    18,    19,    20,
+      21,    36,    37,    38,    39,    40,    42,    43,    45,    48,
+      56,    61,    62,    63,    65,    66,    67,    68,    70,    71,
+      72,    73,    75,    76,    78,    79,    80,    81,    36,    45,
+      43,    43,    43,    43,    48,    48,    36,    42,    48,    79,
+      43,    50,    43,    51,    36,    68,    61,    36,    42,    74,
+      46,    61,    24,    25,    26,    27,    28,    30,    31,    32,
+      47,    69,     3,     4,     5,     6,    48,    48,    61,    68,
+      68,    36,    48,    56,    72,    73,    36,    48,    51,    48,
+      41,    40,    68,    36,    44,    79,    82,    37,    44,    46,
+      47,    50,    51,    72,    70,    71,    71,    71,    71,    46,
+      44,    44,    50,    68,    36,    48,    48,    44,    37,    44,
+      47,    43,    47,    47,    48,    47,    44,    52,    61,    74,
+      40,    68,    37,    45,    45,    48,    50,    68,    68,    45,
+      52,    48,    36,    77,    44,    82,    72,    82,    82,    48,
+      50,    51,    43,    47,    52,    61,    61,    72,    48,    48,
+      22,    23,    64,    51,    47,    44,    48,    44,    68,    37,
+      44,    82,    74,    48,    51,    46,    46,    44,    72,    72,
+      49,    37,    46,    37,    77,    48,    48,    47,    52,    48,
+      44,    37,    14,    45,    44,    44,    61,    49,    52,    72,
+      50,    48,    52,    45,    61,    45,    45,    61,    68,    48,
+      61,    46,    61,    61,    64,    47,    46,    46,    46,    72
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    50,    51,    52,    52,    53,    53,    53,    53,    55,
-      54,    56,    54,    57,    57,    58,    58,    58,    58,    59,
-      59,    59,    59,    59,    59,    59,    59,    59,    59,    59,
-      59,    60,    60,    61,    61,    61,    62,    63,    63,    64,
-      64,    64,    64,    64,    64,    64,    64,    65,    65,    65,
-      65,    65,    66,    66,    66,    67,    68,    68,    69,    69,
-      70,    70,    70,    71,    71,    72,    73,    74,    74,    75,
-      75,    76,    76,    76,    77,    77,    77,    78,    78,    78,
-      78,    79,    79,    79,    79,    79,    80,    80,    80,    81,
-      81,    81,    81,    82,    82,    83,    83,    84,    84,    85,
-      85
+       0,    53,    54,    55,    55,    56,    56,    56,    56,    58,
+      57,    59,    57,    60,    60,    61,    61,    61,    61,    62,
+      62,    62,    62,    62,    62,    62,    62,    62,    62,    62,
+      62,    63,    64,    64,    65,    65,    66,    66,    66,    67,
+      68,    68,    69,    69,    69,    69,    69,    69,    69,    69,
+      70,    70,    70,    70,    70,    71,    71,    71,    72,    72,
+      72,    72,    72,    72,    72,    72,    73,    74,    74,    74,
+      74,    75,    75,    76,    76,    77,    77,    78,    78,    78,
+      79,    79,    79,    79,    79,    80,    80,    80,    80,    80,
+      80,    81,    81,    82,    82,    82,    82
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
@@ -968,15 +980,14 @@ static const yytype_int8 yyr2[] =
 {
        0,     2,     1,     2,     1,     1,     1,     1,     1,     0,
        9,     0,     8,     4,     2,     2,     1,     3,     4,     1,
-       1,     1,     1,     1,     1,     1,     1,     1,     2,     2,
-       1,     2,     2,    11,    11,    10,     7,     3,     1,     1,
-       1,     1,     1,     1,     1,     1,     1,     3,     3,     3,
-       3,     1,     3,     1,     1,     4,     5,     0,     5,     3,
-       3,     5,     0,     1,     1,     7,    11,     5,     7,     1,
-       3,     3,     3,     2,     1,     1,     1,     8,     7,     4,
-       5,     3,     7,     7,     3,     7,     1,     1,     1,     3,
-       3,     1,     1,     3,     5,     1,     3,     1,     3,     1,
-       3
+       1,     1,     1,     1,     1,     1,     1,     2,     1,     2,
+       1,     7,     5,     3,     2,     2,    11,    11,    10,     7,
+       3,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       3,     3,     3,     3,     1,     3,     1,     1,     5,     1,
+       3,     3,     8,     6,    11,     9,     2,     3,     5,     1,
+       3,     7,    11,     5,     7,     1,     3,     3,     3,     2,
+       1,     1,     1,     4,     7,     8,     7,     4,     5,     6,
+       7,     6,     9,     3,     3,     1,     1
 };
 
 
@@ -1439,80 +1450,86 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-  case 2: /* S: BEGIN  */
-#line 31 "semanticAnalysis.y"
-          {print_Id_Table(); id_count = 0; printf("DONE!\n");}
-#line 1446 "y.tab.c"
-    break;
-
   case 3: /* BEGIN: FUNC_DECL BEGIN  */
-#line 33 "semanticAnalysis.y"
+#line 35 "semanticAnalysis.y"
                         {}
-#line 1452 "y.tab.c"
+#line 1457 "y.tab.c"
     break;
 
   case 4: /* BEGIN: FUNC_DECL  */
-#line 34 "semanticAnalysis.y"
+#line 36 "semanticAnalysis.y"
                   {}
-#line 1458 "y.tab.c"
+#line 1463 "y.tab.c"
     break;
 
   case 5: /* TYPE: INT  */
-#line 36 "semanticAnalysis.y"
+#line 38 "semanticAnalysis.y"
            {(yyval.t).lexeme = "INT";}
-#line 1464 "y.tab.c"
+#line 1469 "y.tab.c"
     break;
 
   case 6: /* TYPE: FLOAT  */
-#line 37 "semanticAnalysis.y"
+#line 39 "semanticAnalysis.y"
              {(yyval.t).lexeme = "FLOAT";}
-#line 1470 "y.tab.c"
+#line 1475 "y.tab.c"
     break;
 
   case 7: /* TYPE: CHAR  */
-#line 38 "semanticAnalysis.y"
+#line 40 "semanticAnalysis.y"
             {(yyval.t).lexeme = "CHAR";}
-#line 1476 "y.tab.c"
+#line 1481 "y.tab.c"
     break;
 
   case 8: /* TYPE: VOID  */
-#line 39 "semanticAnalysis.y"
+#line 41 "semanticAnalysis.y"
             {(yyval.t).lexeme = "VOID";}
-#line 1482 "y.tab.c"
+#line 1487 "y.tab.c"
     break;
 
   case 9: /* $@1: %empty  */
-#line 41 "semanticAnalysis.y"
+#line 43 "semanticAnalysis.y"
                                     {insertFunc((yyvsp[-2].t).lexeme,(yyvsp[-3].t).lexeme); updateFunc((int)(yyvsp[0].t).val, dec); decCounter = 0;}
-#line 1488 "y.tab.c"
+#line 1493 "y.tab.c"
     break;
 
   case 10: /* FUNC_DECL: TYPE FUNC '(' PARA_LIST $@1 ')' '{' STMT_LIST '}'  */
-#line 41 "semanticAnalysis.y"
-                                                                                                                                           {print_Id_Table(); id_count = 0;}
-#line 1494 "y.tab.c"
+#line 43 "semanticAnalysis.y"
+                                                                                                                                           {if((strcmp((yyvsp[-8].t).lexeme,returnType_func)!=0)){printf("ERROR : Wrong Return Type");exit(0);}returnType_func = "VOID"; print_Id_Table(); print_Arr_Table(); id_count = 0; arr_count = 0;}
+#line 1499 "y.tab.c"
     break;
 
   case 11: /* $@2: %empty  */
-#line 42 "semanticAnalysis.y"
+#line 44 "semanticAnalysis.y"
                           {insertFunc((yyvsp[-1].t).lexeme,(yyvsp[-2].t).lexeme);}
-#line 1500 "y.tab.c"
+#line 1505 "y.tab.c"
+    break;
+
+  case 12: /* FUNC_DECL: TYPE FUNC '(' $@2 ')' '{' STMT_LIST '}'  */
+#line 44 "semanticAnalysis.y"
+                                                                                   {if((strcmp((yyvsp[-7].t).lexeme,returnType_func)!=0)){printf("ERROR : Wrong Return Type");exit(0);}returnType_func = "VOID"; print_Id_Table(); print_Arr_Table(); id_count = 0; arr_count = 0;}
+#line 1511 "y.tab.c"
     break;
 
   case 13: /* PARA_LIST: PARA_LIST ',' TYPE ID  */
-#line 44 "semanticAnalysis.y"
+#line 46 "semanticAnalysis.y"
                                   {(yyval.t).val = (yyvsp[-3].t).val + 1; insertID((yyvsp[0].t).lexeme, (yyvsp[-1].t).lexeme); dec[decCounter].type = (yyvsp[-1].t).lexeme; dec[decCounter].name = (yyvsp[0].t).lexeme; decCounter++;}
-#line 1506 "y.tab.c"
+#line 1517 "y.tab.c"
     break;
 
   case 14: /* PARA_LIST: TYPE ID  */
-#line 45 "semanticAnalysis.y"
+#line 47 "semanticAnalysis.y"
                     {(yyval.t).val = 1; insertID((yyvsp[0].t).lexeme, (yyvsp[-1].t).lexeme); dec[decCounter].type = (yyvsp[-1].t).lexeme; dec[decCounter].name = (yyvsp[0].t).lexeme; decCounter++;}
-#line 1512 "y.tab.c"
+#line 1523 "y.tab.c"
     break;
 
-  case 37: /* EXPR: EXPR COMP_OP TERM  */
-#line 64 "semanticAnalysis.y"
+  case 31: /* SWITCH_STMT: SWITCH '(' ID ')' '{' CASE_STMT '}'  */
+#line 59 "semanticAnalysis.y"
+                                                  {if(strcmp(findIdType((yyvsp[-4].t).lexeme),"INT")!=0){printf("ERORR: Wrong variable type passed in Switch\n"); exit(0);}}
+#line 1529 "y.tab.c"
+    break;
+
+  case 40: /* EXPR: EXPR COMP_OP TERM  */
+#line 72 "semanticAnalysis.y"
                          {if(strcmp((yyvsp[-2].t).lexeme, (yyvsp[0].t).lexeme)!=0){
                                 print_Id_Table();
                                 printf("ERROR: Type mismatch for expression\n");
@@ -1521,101 +1538,101 @@ yyreduce:
                             (yyval.t).lexeme = (yyvsp[-2].t).lexeme;
                             (yyval.t).val = (float)comparator((yyvsp[-2].t).val,(yyvsp[0].t).val,(yyvsp[-1].t).lexeme);
                          }
-#line 1525 "y.tab.c"
+#line 1542 "y.tab.c"
     break;
 
-  case 38: /* EXPR: TERM  */
-#line 72 "semanticAnalysis.y"
-            {(yyval.t).lexeme = (yyvsp[0].t).lexeme; (yyval.t).val = (yyvsp[0].t).val;}
-#line 1531 "y.tab.c"
-    break;
-
-  case 39: /* COMP_OP: LESS  */
-#line 73 "semanticAnalysis.y"
-               {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
-#line 1537 "y.tab.c"
-    break;
-
-  case 40: /* COMP_OP: GTR  */
-#line 73 "semanticAnalysis.y"
-                                              {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
-#line 1543 "y.tab.c"
-    break;
-
-  case 41: /* COMP_OP: GTR_EQ  */
-#line 73 "semanticAnalysis.y"
-                                                                                {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
-#line 1549 "y.tab.c"
-    break;
-
-  case 42: /* COMP_OP: LESS_EQ  */
-#line 73 "semanticAnalysis.y"
-                                                                                                                   {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
-#line 1555 "y.tab.c"
-    break;
-
-  case 43: /* COMP_OP: NOT_EQ  */
-#line 73 "semanticAnalysis.y"
-                                                                                                                                                     {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
-#line 1561 "y.tab.c"
-    break;
-
-  case 44: /* COMP_OP: AND  */
-#line 73 "semanticAnalysis.y"
-                                                                                                                                                                                    {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
-#line 1567 "y.tab.c"
-    break;
-
-  case 45: /* COMP_OP: OR  */
-#line 73 "semanticAnalysis.y"
-                                                                                                                                                                                                                  {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
-#line 1573 "y.tab.c"
-    break;
-
-  case 46: /* COMP_OP: EQ_EQ  */
-#line 73 "semanticAnalysis.y"
-                                                                                                                                                                                                                                                   {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
-#line 1579 "y.tab.c"
-    break;
-
-  case 47: /* TERM: TERM '+' FACTOR  */
-#line 74 "semanticAnalysis.y"
-                       {if(strcmp((yyvsp[-2].t).lexeme,(yyvsp[0].t).lexeme)!=0){print_Id_Table(); printf("ERROR: Type mismatch for expression\n");exit(0);} (yyval.t).lexeme = (yyvsp[-2].t).lexeme; (yyval.t).val = (yyvsp[-2].t).val + (yyvsp[0].t).val;}
-#line 1585 "y.tab.c"
-    break;
-
-  case 48: /* TERM: TERM '-' FACTOR  */
-#line 75 "semanticAnalysis.y"
-                       {if(strcmp((yyvsp[-2].t).lexeme,(yyvsp[0].t).lexeme)!=0){print_Id_Table(); printf("ERROR: Type mismatch for expression\n");exit(0);} (yyval.t).lexeme = (yyvsp[-2].t).lexeme; (yyval.t).val = (yyvsp[-2].t).val - (yyvsp[0].t).val;}
-#line 1591 "y.tab.c"
-    break;
-
-  case 49: /* TERM: TERM '*' FACTOR  */
-#line 76 "semanticAnalysis.y"
-                       {if(strcmp((yyvsp[-2].t).lexeme,(yyvsp[0].t).lexeme)!=0){print_Id_Table(); printf("ERROR: Type mismatch for expression\n");exit(0);} (yyval.t).lexeme = (yyvsp[-2].t).lexeme; (yyval.t).val = (yyvsp[-2].t).val * (yyvsp[0].t).val;}
-#line 1597 "y.tab.c"
-    break;
-
-  case 50: /* TERM: TERM '/' FACTOR  */
-#line 77 "semanticAnalysis.y"
-                       {if(strcmp((yyvsp[-2].t).lexeme,(yyvsp[0].t).lexeme)!=0){print_Id_Table(); printf("ERROR: Type mismatch for expression\n");exit(0);} (yyval.t).lexeme = (yyvsp[-2].t).lexeme; (yyval.t).val = (yyvsp[-2].t).val / (yyvsp[0].t).val;}
-#line 1603 "y.tab.c"
-    break;
-
-  case 51: /* TERM: FACTOR  */
-#line 78 "semanticAnalysis.y"
-              {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
-#line 1609 "y.tab.c"
-    break;
-
-  case 52: /* FACTOR: '(' EXPR ')'  */
+  case 41: /* EXPR: TERM  */
 #line 80 "semanticAnalysis.y"
-                      {(yyval.t).lexeme = (yyvsp[-1].t).lexeme; (yyval.t).val = (yyvsp[-1].t).val;}
-#line 1615 "y.tab.c"
+               {(yyval.t).lexeme = (yyvsp[0].t).lexeme; (yyval.t).val = (yyvsp[0].t).val;}
+#line 1548 "y.tab.c"
     break;
 
-  case 53: /* FACTOR: ID  */
+  case 42: /* COMP_OP: LESS  */
 #line 81 "semanticAnalysis.y"
+               {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
+#line 1554 "y.tab.c"
+    break;
+
+  case 43: /* COMP_OP: GTR  */
+#line 81 "semanticAnalysis.y"
+                                              {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
+#line 1560 "y.tab.c"
+    break;
+
+  case 44: /* COMP_OP: GTR_EQ  */
+#line 81 "semanticAnalysis.y"
+                                                                                {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
+#line 1566 "y.tab.c"
+    break;
+
+  case 45: /* COMP_OP: LESS_EQ  */
+#line 81 "semanticAnalysis.y"
+                                                                                                                   {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
+#line 1572 "y.tab.c"
+    break;
+
+  case 46: /* COMP_OP: NOT_EQ  */
+#line 81 "semanticAnalysis.y"
+                                                                                                                                                     {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
+#line 1578 "y.tab.c"
+    break;
+
+  case 47: /* COMP_OP: AND  */
+#line 81 "semanticAnalysis.y"
+                                                                                                                                                                                    {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
+#line 1584 "y.tab.c"
+    break;
+
+  case 48: /* COMP_OP: OR  */
+#line 81 "semanticAnalysis.y"
+                                                                                                                                                                                                                  {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
+#line 1590 "y.tab.c"
+    break;
+
+  case 49: /* COMP_OP: EQ_EQ  */
+#line 81 "semanticAnalysis.y"
+                                                                                                                                                                                                                                                   {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
+#line 1596 "y.tab.c"
+    break;
+
+  case 50: /* TERM: TERM '+' FACTOR  */
+#line 82 "semanticAnalysis.y"
+                       {if(strcmp((yyvsp[-2].t).lexeme,(yyvsp[0].t).lexeme)!=0){print_Id_Table(); printf("ERROR: Type mismatch for expression\n");exit(0);} (yyval.t).lexeme = (yyvsp[-2].t).lexeme; (yyval.t).val = (yyvsp[-2].t).val + (yyvsp[0].t).val;}
+#line 1602 "y.tab.c"
+    break;
+
+  case 51: /* TERM: TERM '-' FACTOR  */
+#line 83 "semanticAnalysis.y"
+                       {if(strcmp((yyvsp[-2].t).lexeme,(yyvsp[0].t).lexeme)!=0){print_Id_Table(); printf("ERROR: Type mismatch for expression\n");exit(0);} (yyval.t).lexeme = (yyvsp[-2].t).lexeme; (yyval.t).val = (yyvsp[-2].t).val - (yyvsp[0].t).val;}
+#line 1608 "y.tab.c"
+    break;
+
+  case 52: /* TERM: TERM '*' FACTOR  */
+#line 84 "semanticAnalysis.y"
+                       {if(strcmp((yyvsp[-2].t).lexeme,(yyvsp[0].t).lexeme)!=0){print_Id_Table(); printf("ERROR: Type mismatch for expression\n");exit(0);} (yyval.t).lexeme = (yyvsp[-2].t).lexeme; (yyval.t).val = (yyvsp[-2].t).val * (yyvsp[0].t).val;}
+#line 1614 "y.tab.c"
+    break;
+
+  case 53: /* TERM: TERM '/' FACTOR  */
+#line 85 "semanticAnalysis.y"
+                       {if(strcmp((yyvsp[-2].t).lexeme,(yyvsp[0].t).lexeme)!=0){print_Id_Table(); printf("ERROR: Type mismatch for expression\n");exit(0);} (yyval.t).lexeme = (yyvsp[-2].t).lexeme; (yyval.t).val = (yyvsp[-2].t).val / (yyvsp[0].t).val;}
+#line 1620 "y.tab.c"
+    break;
+
+  case 54: /* TERM: FACTOR  */
+#line 86 "semanticAnalysis.y"
+              {(yyval.t).lexeme = (yyvsp[0].t).lexeme;}
+#line 1626 "y.tab.c"
+    break;
+
+  case 55: /* FACTOR: '(' EXPR ')'  */
+#line 88 "semanticAnalysis.y"
+                      {(yyval.t).lexeme = (yyvsp[-1].t).lexeme; (yyval.t).val = (yyvsp[-1].t).val;}
+#line 1632 "y.tab.c"
+    break;
+
+  case 56: /* FACTOR: ID  */
+#line 89 "semanticAnalysis.y"
             {bool found = true;
              for(int i = 0; i<id_count; i++){
                 if(strcmp(id_table[i].name,(yyvsp[0].t).lexeme)==0){
@@ -1629,79 +1646,197 @@ yyreduce:
                     printf("ERROR: Undeclared variable %s\n", (yyvsp[0].t).lexeme);
                     exit(0);
                 }
-             if(strcmp((yyval.t).lexeme, "CHAR") == 0){
-                printf("ERROR: Arithmetic/Logical operation on character variable %s\n", (yyvsp[0].t).lexeme);
-                exit(0);
-             }
             }
-#line 1638 "y.tab.c"
+#line 1651 "y.tab.c"
     break;
 
-  case 54: /* FACTOR: CONST  */
-#line 99 "semanticAnalysis.y"
-               {if(!strcmp((yyvsp[0].t).lexeme,"CHAR")){
-                    printf("ERROR: Arithmetic/Logical operation on character %c\n", (int)(yyvsp[0].t).val + 'a');
-                    exit(0);
-                }; (yyval.t).lexeme = (yyvsp[0].t).lexeme; (yyval.t).val = (yyvsp[0].t).val;}
-#line 1647 "y.tab.c"
+  case 57: /* FACTOR: CONST  */
+#line 103 "semanticAnalysis.y"
+               {(yyval.t).lexeme = (yyvsp[0].t).lexeme; (yyval.t).val = (yyvsp[0].t).val;}
+#line 1657 "y.tab.c"
     break;
 
-  case 55: /* ASSGN: ID '=' EXPR ASSGN_TAIL  */
-#line 104 "semanticAnalysis.y"
-                               {typeCheck((yyvsp[-3].t).lexeme,(yyvsp[-1].t).lexeme); updateID((yyvsp[-3].t).lexeme,(yyvsp[-1].t).val);}
-#line 1653 "y.tab.c"
-    break;
-
-  case 56: /* ASSGN_TAIL: ',' ID '=' EXPR ASSGN_TAIL  */
-#line 105 "semanticAnalysis.y"
-                                        {typeCheck((yyvsp[-3].t).lexeme,(yyvsp[-1].t).lexeme); updateID((yyvsp[-3].t).lexeme,(yyvsp[-1].t).val);}
-#line 1659 "y.tab.c"
-    break;
-
-  case 58: /* DECL: TYPE ID '=' EXPR DECL_TAIL  */
+  case 58: /* ASSGN: ID '=' EXPR ',' ASSGN  */
 #line 108 "semanticAnalysis.y"
-                                  {(yyval.t).lexeme = (yyvsp[-4].t).lexeme; dec[decCounter] = *(struct dec*)malloc(sizeof(dec)); dec[decCounter].name = (yyvsp[-3].t).lexeme; dec[decCounter].val = (yyvsp[-1].t).val; dec[decCounter].type = (yyvsp[-1].t).lexeme; decCounter++;insertEntry((yyvsp[-4].t).lexeme);}
-#line 1665 "y.tab.c"
+                              {typeCheck((yyvsp[-4].t).lexeme,(yyvsp[-2].t).lexeme); updateID((yyvsp[-4].t).lexeme,(yyvsp[-2].t).val);}
+#line 1663 "y.tab.c"
     break;
 
-  case 59: /* DECL: TYPE ID DECL_TAIL  */
+  case 59: /* ASSGN: EXPR  */
 #line 109 "semanticAnalysis.y"
-                         {(yyval.t).lexeme = (yyvsp[-2].t).lexeme; dec[decCounter] = *(struct dec*)malloc(sizeof(dec)); dec[decCounter].name = (yyvsp[-1].t).lexeme; dec[decCounter].val = INT_MIN; decCounter++;insertEntry((yyvsp[-2].t).lexeme);}
-#line 1671 "y.tab.c"
+             {}
+#line 1669 "y.tab.c"
     break;
 
-  case 60: /* DECL_TAIL: ',' ID DECL_TAIL  */
+  case 60: /* ASSGN: ID '=' EXPR  */
+#line 110 "semanticAnalysis.y"
+                    {typeCheck((yyvsp[-2].t).lexeme,(yyvsp[0].t).lexeme); updateID((yyvsp[-2].t).lexeme,(yyvsp[0].t).val);}
+#line 1675 "y.tab.c"
+    break;
+
+  case 61: /* ASSGN: EXPR ',' ASSGN  */
 #line 111 "semanticAnalysis.y"
-                             {dec[decCounter] = *(struct dec*)malloc(sizeof(dec)); dec[decCounter].name = (yyvsp[-1].t).lexeme; dec[decCounter].val = INT_MIN; decCounter++;}
-#line 1677 "y.tab.c"
+                       {}
+#line 1681 "y.tab.c"
     break;
 
-  case 61: /* DECL_TAIL: ',' ID '=' EXPR DECL_TAIL  */
+  case 62: /* ASSGN: ARR '[' INT_CONST ']' '=' EXPR ',' ASSGN  */
 #line 112 "semanticAnalysis.y"
-                                      {dec[decCounter] = *(struct dec*)malloc(sizeof(dec)); dec[decCounter].name = (yyvsp[-3].t).lexeme; dec[decCounter].val = (yyvsp[-1].t).val;dec[decCounter].type = (yyvsp[-1].t).lexeme; decCounter++;}
-#line 1683 "y.tab.c"
+                                                 {if(strcmp(findArrType((yyvsp[-7].t).lexeme),(yyvsp[-5].t).lexeme)!=0){printf("ERROR: Wrong variable type passed in Array\n"); exit(0);} if((yyvsp[-5].t).val<0 || !findArrSize((yyvsp[-7].t).lexeme, 0, (yyvsp[-5].t).val)){printf("ERROR: Array index out of bounds\n"); exit(0);}}
+#line 1687 "y.tab.c"
     break;
 
-  case 74: /* CONST: INT_CONST  */
-#line 131 "semanticAnalysis.y"
-                  {(yyval.t).val = (yyvsp[0].t).val;(yyval.t).lexeme = "INT";}
-#line 1689 "y.tab.c"
+  case 63: /* ASSGN: ARR '[' INT_CONST ']' '=' EXPR  */
+#line 113 "semanticAnalysis.y"
+                                       {if(strcmp(findArrType((yyvsp[-5].t).lexeme),(yyvsp[-3].t).lexeme)!=0){printf("ERROR: Wrong variable type passed in Array\n"); exit(0);} if((yyvsp[-3].t).val<0 || !findArrSize((yyvsp[-5].t).lexeme, 0, (yyvsp[-3].t).val)){printf("ERROR: Array index out of bounds\n"); exit(0);}}
+#line 1693 "y.tab.c"
     break;
 
-  case 75: /* CONST: FLOAT_CONST  */
-#line 132 "semanticAnalysis.y"
-                    {(yyval.t).val = (yyvsp[0].t).val;(yyval.t).lexeme = "FLOAT";}
-#line 1695 "y.tab.c"
+  case 64: /* ASSGN: ARR '[' INT_CONST ']' '[' INT_CONST ']' '=' EXPR ',' ASSGN  */
+#line 114 "semanticAnalysis.y"
+                                                                   {if(strcmp(findArrType((yyvsp[-10].t).lexeme),(yyvsp[-8].t).lexeme)!=0){printf("ERROR: Wrong variable type passed in Array\n"); exit(0);} if((yyvsp[-8].t).val<0 || (yyvsp[-5].t).val<0 || !findArrSize((yyvsp[-10].t).lexeme, (yyvsp[-8].t).val, (yyvsp[-5].t).val)){printf("ERROR: Array index out of bounds\n"); exit(0);}}
+#line 1699 "y.tab.c"
     break;
 
-  case 76: /* CONST: CHAR_CONST  */
-#line 133 "semanticAnalysis.y"
-                   {(yyval.t).val = (yyvsp[0].t).val;(yyval.t).lexeme = "CHAR";}
-#line 1701 "y.tab.c"
+  case 65: /* ASSGN: ARR '[' INT_CONST ']' '[' INT_CONST ']' '=' EXPR  */
+#line 115 "semanticAnalysis.y"
+                                                         {if(strcmp(findArrType((yyvsp[-8].t).lexeme),(yyvsp[-6].t).lexeme)!=0){printf("ERROR: Wrong variable type passed in Array\n"); exit(0);} if((yyvsp[-6].t).val<0 || (yyvsp[-3].t).val<0 || !findArrSize((yyvsp[-8].t).lexeme, (yyvsp[-6].t).val, (yyvsp[-3].t).val)){printf("ERROR: Array index out of bounds\n"); exit(0);}}
+#line 1705 "y.tab.c"
     break;
 
-  case 77: /* FUNC_CALL: TYPE ID '=' FUNC '(' MIXED_LIST ')' ';'  */
+  case 66: /* DECL: TYPE DECL_TAIL  */
+#line 117 "semanticAnalysis.y"
+                      {insertEntry((yyvsp[-1].t).lexeme);}
+#line 1711 "y.tab.c"
+    break;
+
+  case 67: /* DECL_TAIL: ID '=' EXPR  */
+#line 118 "semanticAnalysis.y"
+                        {dec[decCounter] = *(struct dec*)malloc(sizeof(dec)); dec[decCounter].name = (yyvsp[-2].t).lexeme; dec[decCounter].val = (yyvsp[0].t).val;dec[decCounter].type = (yyvsp[0].t).lexeme; decCounter++;}
+#line 1717 "y.tab.c"
+    break;
+
+  case 68: /* DECL_TAIL: ID '=' EXPR ',' DECL_TAIL  */
+#line 119 "semanticAnalysis.y"
+                                      {dec[decCounter] = *(struct dec*)malloc(sizeof(dec)); dec[decCounter].name = (yyvsp[-4].t).lexeme; dec[decCounter].val = (yyvsp[-2].t).val;dec[decCounter].type = (yyvsp[-2].t).lexeme; decCounter++;}
+#line 1723 "y.tab.c"
+    break;
+
+  case 69: /* DECL_TAIL: ID  */
+#line 120 "semanticAnalysis.y"
+               {dec[decCounter] = *(struct dec*)malloc(sizeof(dec)); dec[decCounter].name = (yyvsp[0].t).lexeme; dec[decCounter].val = INT_MIN; decCounter++;}
+#line 1729 "y.tab.c"
+    break;
+
+  case 70: /* DECL_TAIL: ID ',' DECL_TAIL  */
+#line 121 "semanticAnalysis.y"
+                             {dec[decCounter] = *(struct dec*)malloc(sizeof(dec)); dec[decCounter].name = (yyvsp[-2].t).lexeme; dec[decCounter].val = INT_MIN; decCounter++;}
+#line 1735 "y.tab.c"
+    break;
+
+  case 73: /* PRINT: PRINTF '(' STRING ')' ';'  */
+#line 134 "semanticAnalysis.y"
+                                  {}
+#line 1741 "y.tab.c"
+    break;
+
+  case 74: /* PRINT: PRINTF '(' STRING ',' VAR_LIST ')' ';'  */
 #line 135 "semanticAnalysis.y"
+                                               {for(int i = 0;i<strlen((yyvsp[-4].t).lexeme);i++){
+                                                    if((yyvsp[-4].t).lexeme[i] == '%'){
+                                                        if(list_c<=0){
+                                                            printf("ERROR: Too few arguments for printf\n");
+                                                            exit(0);
+                                                        }
+                                                        if((yyvsp[-4].t).lexeme[i+1] == 'd'){
+                                                            if(strcmp(listType[list_c-1],"INT")!=0){
+                                                                printf("ERROR: Type mismatch for printf\n");
+                                                                exit(0);
+                                                            }
+                                                            list_c--;
+                                                        }
+                                                        else if((yyvsp[-4].t).lexeme[i+1] == 'f'){
+                                                            if(strcmp(listType[list_c-1],"FLOAT")!=0){
+                                                                printf("ERROR: Type mismatch for printf\n");
+                                                                exit(0);
+                                                            }
+                                                            list_c--;
+                                                        }
+                                                        else if((yyvsp[-4].t).lexeme[i+1] == 'c'){
+                                                            if(strcmp(listType[list_c-1],"CHAR")!=0){
+                                                                printf("ERROR: Type mismatch for printf\n");
+                                                                exit(0);
+                                                            }
+                                                            list_c--;
+                                                        }
+                                                        
+                                                    }
+                                                }
+                                                if(list_c > 0){
+                                                    printf("ERROR: Too many arguments for printf\n");
+                                                    exit(0);
+                                                }
+                                                list_c = 0;
+                                                }
+#line 1782 "y.tab.c"
+    break;
+
+  case 75: /* VAR_LIST: ID  */
+#line 173 "semanticAnalysis.y"
+              {listType[list_c] = findIdType((yyvsp[0].t).lexeme); list_c++;}
+#line 1788 "y.tab.c"
+    break;
+
+  case 76: /* VAR_LIST: ID ',' VAR_LIST  */
+#line 174 "semanticAnalysis.y"
+                           {listType[list_c] = findIdType((yyvsp[-2].t).lexeme); list_c++;}
+#line 1794 "y.tab.c"
+    break;
+
+  case 77: /* RTRN_STMT: RETURN ID ';'  */
+#line 176 "semanticAnalysis.y"
+                          {returnType_func = findIdType((yyvsp[-1].t).lexeme);printf("return type :%s\n",returnType_func);}
+#line 1800 "y.tab.c"
+    break;
+
+  case 78: /* RTRN_STMT: RETURN CONST ';'  */
+#line 177 "semanticAnalysis.y"
+                          {returnType_func = (yyvsp[-1].t).lexeme; }
+#line 1806 "y.tab.c"
+    break;
+
+  case 80: /* CONST: INT_CONST  */
+#line 180 "semanticAnalysis.y"
+                  {(yyval.t).val = (yyvsp[0].t).val;(yyval.t).lexeme = "INT";}
+#line 1812 "y.tab.c"
+    break;
+
+  case 81: /* CONST: FLOAT_CONST  */
+#line 181 "semanticAnalysis.y"
+                    {(yyval.t).val = (yyvsp[0].t).val;(yyval.t).lexeme = "FLOAT";}
+#line 1818 "y.tab.c"
+    break;
+
+  case 82: /* CONST: CHAR_CONST  */
+#line 182 "semanticAnalysis.y"
+                   {(yyval.t).val = (yyvsp[0].t).val;(yyval.t).lexeme = "CHAR";}
+#line 1824 "y.tab.c"
+    break;
+
+  case 83: /* CONST: ARR '[' INT_CONST ']'  */
+#line 183 "semanticAnalysis.y"
+                              {if((yyvsp[-1].t).val < 0 || !findArrSize((yyvsp[-3].t).lexeme, 0, (yyvsp[-1].t).val)){printf("ERROR: Array %s out of bounds\n", (yyvsp[-3].t).lexeme); exit(0);} (yyval.t).lexeme = findArrType((yyvsp[-3].t).lexeme); (yyval.t).val = findArrVal((yyvsp[-3].t).lexeme, 0, (yyvsp[-1].t).val);}
+#line 1830 "y.tab.c"
+    break;
+
+  case 84: /* CONST: ARR '[' INT_CONST ']' '[' INT_CONST ']'  */
+#line 184 "semanticAnalysis.y"
+                                                {if((yyvsp[-4].t).val < 0 || (yyvsp[-1].t).val < 0 || !findArrSize((yyvsp[-6].t).lexeme, (yyvsp[-4].t).val, (yyvsp[-1].t).val)){printf("ERROR: Array %s out of bounds\n", (yyvsp[-6].t).lexeme); exit(0);} (yyval.t).lexeme = findArrType((yyvsp[-6].t).lexeme); (yyval.t).val = findArrVal((yyvsp[-6].t).lexeme, (yyvsp[-4].t).val, (yyvsp[-1].t).val);}
+#line 1836 "y.tab.c"
+    break;
+
+  case 85: /* FUNC_CALL: TYPE ID '=' FUNC '(' MIXED_LIST ')' ';'  */
+#line 186 "semanticAnalysis.y"
                                                     {if(strcmp((yyvsp[-7].t).lexeme, findFunc((yyvsp[-4].t).lexeme))!=0){
                                                             printf("ERROR: Type mismatch for function %s\n", (yyvsp[-4].t).lexeme);
                                                             exit(0);
@@ -1712,8 +1847,8 @@ yyreduce:
                                                                     printf("ERROR: Number of arguments mismatch for function %s\n", (yyvsp[-4].t).lexeme);
                                                                     exit(0);
                                                                 }
-                                                                for(int j = 0; j<list_c; j++){
-                                                                    if(strcmp(func_table[i].paraType[j],listType[j])!=0){
+                                                                for(int j = list_c-1; j>=0; j--){
+                                                                    if(strcmp(func_table[i].paraType[list_c - j - 1],listType[j])!=0){
                                                                         printf("ERROR: Type mismatch for function %s\n", (yyvsp[-4].t).lexeme);
                                                                         exit(0);
                                                                     }
@@ -1722,11 +1857,11 @@ yyreduce:
                                                         }
                                                         list_c = 0;
                                                     }
-#line 1726 "y.tab.c"
+#line 1861 "y.tab.c"
     break;
 
-  case 78: /* FUNC_CALL: TYPE ID '=' FUNC '(' ')' ';'  */
-#line 155 "semanticAnalysis.y"
+  case 86: /* FUNC_CALL: TYPE ID '=' FUNC '(' ')' ';'  */
+#line 206 "semanticAnalysis.y"
                                          {if(strcmp((yyvsp[-6].t).lexeme, findFunc((yyvsp[-3].t).lexeme))!=0){
                                                 printf("ERROR: Type mismatch for function %s\n", (yyvsp[-3].t).lexeme);
                                                 exit(0);
@@ -1741,17 +1876,17 @@ yyreduce:
                                             }
                                             insertID((yyvsp[-5].t).lexeme, (yyvsp[-6].t).lexeme);
                                             }
-#line 1745 "y.tab.c"
+#line 1880 "y.tab.c"
     break;
 
-  case 79: /* FUNC_CALL: FUNC '(' ')' ';'  */
-#line 169 "semanticAnalysis.y"
+  case 87: /* FUNC_CALL: FUNC '(' ')' ';'  */
+#line 220 "semanticAnalysis.y"
                                         {findFunc((yyvsp[-3].t).lexeme);}
-#line 1751 "y.tab.c"
+#line 1886 "y.tab.c"
     break;
 
-  case 80: /* FUNC_CALL: FUNC '(' MIXED_LIST ')' ';'  */
-#line 170 "semanticAnalysis.y"
+  case 88: /* FUNC_CALL: FUNC '(' MIXED_LIST ')' ';'  */
+#line 221 "semanticAnalysis.y"
                                         {findFunc((yyvsp[-4].t).lexeme); 
                                         for(int i = 0; i<func_count; i++){
                                             if(strcmp(func_table[i].name,(yyvsp[-4].t).lexeme)==0){
@@ -1759,43 +1894,92 @@ yyreduce:
                                                     printf("ERROR: Number of arguments mismatch for function %s\n", (yyvsp[-4].t).lexeme);
                                                     exit(0);
                                                 }
-                                                for(int j = 0; j<list_c; j++){
-                                                    if(strcmp(func_table[i].paraType[j],listType[j])!=0){
+                                                for(int j = list_c-1; j>=0; j--){
+                                                    if(strcmp(func_table[i].paraType[list_c - j -1],listType[j])!=0){
                                                         printf("ERROR: Type mismatch for function %s\n", (yyvsp[-4].t).lexeme);
                                                         exit(0);
                                                     }
                                                 }
                                             }
                                         }list_c = 0;}
-#line 1771 "y.tab.c"
+#line 1906 "y.tab.c"
     break;
 
-  case 89: /* MIXED_LIST: ID ',' MIXED_LIST  */
-#line 197 "semanticAnalysis.y"
+  case 89: /* FUNC_CALL: ID '=' FUNC '(' ')' ';'  */
+#line 237 "semanticAnalysis.y"
+                                    {if(strcmp(findIdType((yyvsp[-5].t).lexeme), findFunc((yyvsp[-3].t).lexeme))!=0){
+                                            printf("ERROR: Type mismatch for function %s\n", (yyvsp[-3].t).lexeme);
+                                            exit(0);
+                                        }
+                                        for(int i = 0; i<func_count; i++){
+                                            if(strcmp(func_table[i].name,(yyvsp[-3].t).lexeme)==0){
+                                                if(func_table[i].para != list_c){
+                                                    printf("ERROR: Number of arguments mismatch for function %s\n", (yyvsp[-3].t).lexeme);
+                                                    exit(0);
+                                                }
+                                            }
+                                        }
+                                        }
+#line 1924 "y.tab.c"
+    break;
+
+  case 90: /* FUNC_CALL: ID '=' FUNC '(' MIXED_LIST ')' ';'  */
+#line 250 "semanticAnalysis.y"
+                                               {
+                                        if(strcmp(findIdType((yyvsp[-6].t).lexeme), findFunc((yyvsp[-4].t).lexeme))!=0){
+                                            printf("ERROR: Type mismatch for function %s\n", (yyvsp[-4].t).lexeme);
+                                            exit(0);
+                                        }
+                                        for(int i = 0; i<func_count; i++){
+                                            if(strcmp(func_table[i].name,(yyvsp[-4].t).lexeme)==0){
+                                                if(func_table[i].para != list_c){
+                                                    printf("ERROR: Number of arguments mismatch for function %s\n", (yyvsp[-4].t).lexeme);
+                                                    exit(0);
+                                                }
+                                            }
+                                        }list_c = 0;
+          }
+#line 1943 "y.tab.c"
+    break;
+
+  case 91: /* ARR_DECL: TYPE ARR '[' INT_CONST ']' ';'  */
+#line 265 "semanticAnalysis.y"
+                                          {insertArr((yyvsp[-4].t).lexeme, (yyvsp[-5].t).lexeme, 0, (yyvsp[-2].t).val);}
+#line 1949 "y.tab.c"
+    break;
+
+  case 92: /* ARR_DECL: TYPE ARR '[' INT_CONST ']' '[' INT_CONST ']' ';'  */
+#line 268 "semanticAnalysis.y"
+                                                            {insertArr((yyvsp[-7].t).lexeme, (yyvsp[-8].t).lexeme, (yyvsp[-5].t).val, (yyvsp[-2].t).val);}
+#line 1955 "y.tab.c"
+    break;
+
+  case 93: /* MIXED_LIST: ID ',' MIXED_LIST  */
+#line 273 "semanticAnalysis.y"
                                {listType[list_c] = findIdType((yyvsp[-2].t).lexeme); list_c++;}
-#line 1777 "y.tab.c"
+#line 1961 "y.tab.c"
     break;
 
-  case 90: /* MIXED_LIST: CONST ',' MIXED_LIST  */
-#line 198 "semanticAnalysis.y"
+  case 94: /* MIXED_LIST: CONST ',' MIXED_LIST  */
+#line 274 "semanticAnalysis.y"
                                    {listType[list_c] = (yyvsp[-2].t).lexeme; list_c++;}
-#line 1783 "y.tab.c"
+#line 1967 "y.tab.c"
     break;
 
-  case 91: /* MIXED_LIST: ID  */
-#line 199 "semanticAnalysis.y"
+  case 95: /* MIXED_LIST: ID  */
+#line 275 "semanticAnalysis.y"
                  {listType[list_c] = findIdType((yyvsp[0].t).lexeme); list_c++;}
-#line 1789 "y.tab.c"
+#line 1973 "y.tab.c"
     break;
 
-  case 92: /* MIXED_LIST: CONST  */
-#line 200 "semanticAnalysis.y"
+  case 96: /* MIXED_LIST: CONST  */
+#line 276 "semanticAnalysis.y"
                     {listType[list_c] = (yyvsp[0].t).lexeme; list_c++;}
-#line 1795 "y.tab.c"
+#line 1979 "y.tab.c"
     break;
 
 
-#line 1799 "y.tab.c"
+#line 1983 "y.tab.c"
 
       default: break;
     }
@@ -1988,7 +2172,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 211 "semanticAnalysis.y"
+#line 287 "semanticAnalysis.y"
 
 
 void insertEntry(char *t){
@@ -2007,7 +2191,7 @@ void insertEntry(char *t){
 
 void yyerror()
 {
-    printTable();
+    //printTable();
     printf("Syntax Error\n");
     exit(0);
 }
@@ -2016,8 +2200,10 @@ int main()
 {
     yyin = fopen("../input.txt","r");
     yyparse();
-    /* printTable(); */
+    //printTable();
     /* print_Id_Table(); */
     print_func_Table();
+    printf("\nParse Successful!\n");
+    /* print_Arr_Table(); */
     return 0;
 }

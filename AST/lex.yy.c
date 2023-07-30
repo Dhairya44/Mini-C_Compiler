@@ -351,8 +351,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 47
-#define YY_END_OF_BUFFER 48
+#define YY_NUM_RULES 45
+#define YY_END_OF_BUFFER 46
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -362,19 +362,19 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[138] =
     {   0,
-        0,    0,    0,    0,    0,    0,   48,   39,    3,    1,
-        2,   38,   28,    4,   28,   39,    2,   29,   28,   28,
-       28,   24,   31,   28,   30,   23,   39,   23,   23,   23,
-       23,   23,   23,   23,   23,   23,   23,   23,   39,   47,
-       46,   44,   35,    0,    7,    4,   36,    0,   39,   24,
-       39,    5,    0,   24,   40,   33,   34,   32,    0,   23,
+        0,    0,    0,    0,    0,    0,   46,   37,    3,    1,
+        2,   36,   28,    4,   28,   37,    2,   29,   28,   28,
+       28,   24,   28,   28,   28,   23,   37,   23,   23,   23,
+       23,   23,   23,   23,   23,   23,   23,   23,   37,   45,
+       44,   42,   33,    0,    7,    4,   34,    0,   37,   24,
+       37,    5,    0,   24,   38,   31,   32,   30,    0,   23,
         0,   27,   23,   23,   23,   23,   23,   23,   23,   23,
-       12,   23,   23,   23,   23,   23,   23,   37,   46,   44,
-       26,    0,    0,    5,   25,    0,   45,    0,   41,   23,
+       12,   23,   23,   23,   23,   23,   23,   35,   44,   42,
+       26,    0,    0,    5,   25,    0,   43,    0,   39,   23,
        23,   23,   23,   23,   23,   23,   14,    8,   23,   23,
 
-       23,   23,   23,    6,   42,    0,   23,   22,    9,   23,
-       23,   13,   23,   23,   23,   23,   11,   23,    0,   43,
+       23,   23,   23,    6,   40,    0,   23,   22,    9,   23,
+       23,   13,   23,   23,   23,   23,   11,   23,    0,   41,
        18,   23,   23,   10,   23,   23,   23,   15,   23,   23,
        20,   19,   16,   23,   21,   17,    0
     } ;
@@ -504,7 +504,7 @@ static const flex_int16_t yy_nxt[449] =
        44,   44,   44,   44,   46,  137,   46,   46,   46,   46,
        48,  137,   48,   48,   48,   48,   55,   55,   60,  137,
        60,   82,   82,   82,   82,   82,   82,   84,  137,   84,
-       84,   84,   84,   86,  137,   86,   86,    7,  137,  137,
+       84,   84,   84,   86,  137,  137,   86,    7,  137,  137,
 
       137,  137,  137,  137,  137,  137,  137,  137,  137,  137,
       137,  137,  137,  137,  137,  137,  137,  137,  137,  137,
@@ -557,7 +557,7 @@ static const flex_int16_t yy_chk[449] =
       139,  139,  139,  139,  140,    0,  140,  140,  140,  140,
       141,    0,  141,  141,  141,  141,  142,  142,  143,    0,
       143,  146,  146,  146,  146,  146,  146,  147,    0,  147,
-      147,  147,  147,  148,    0,  148,  148,  137,  137,  137,
+      147,  147,  147,  148,    0,    0,  148,  137,  137,  137,
 
       137,  137,  137,  137,  137,  137,  137,  137,  137,  137,
       137,  137,  137,  137,  137,  137,  137,  137,  137,  137,
@@ -580,17 +580,18 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "semanticAnalysis.l"
-#line 2 "semanticAnalysis.l"
+#line 1 "ast.l"
+#line 2 "ast.l"
+    #include "header.h"
     #include <stdio.h>
     #include <stdlib.h>
     #include <string.h>
     #include <ctype.h>
     #include "y.tab.h"
     int line = 1;
-#line 592 "lex.yy.c"
+#line 593 "lex.yy.c"
 
-#line 594 "lex.yy.c"
+#line 595 "lex.yy.c"
 
 #define INITIAL 0
 #define FUNCTION 1
@@ -809,10 +810,10 @@ YY_DECL
 		}
 
 	{
-#line 17 "semanticAnalysis.l"
+#line 18 "ast.l"
 
 
-#line 816 "lex.yy.c"
+#line 817 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -872,214 +873,204 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 19 "semanticAnalysis.l"
+#line 20 "ast.l"
 {line++;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 20 "semanticAnalysis.l"
+#line 21 "ast.l"
 {;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 21 "semanticAnalysis.l"
+#line 22 "ast.l"
 {;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 22 "semanticAnalysis.l"
+#line 23 "ast.l"
 {;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 23 "semanticAnalysis.l"
+#line 24 "ast.l"
 {;}
 	YY_BREAK
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 24 "semanticAnalysis.l"
+#line 25 "ast.l"
 {for(int i=0; i<strlen(yytext); i++){if(yytext[i] == '\n'){line++;}}}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 25 "semanticAnalysis.l"
-{yylval.t.lexeme = strdup(yytext); insertIntoTable(line, yytext, "STRING"); return STRING;}
+#line 26 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "STRING"); return STRING;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 26 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "KEYWORD"); yylval.t.lexeme = "INT"; return INT;}
+#line 27 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "KEYWORD"); return INT;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 27 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "KEYWORD"); yylval.t.lexeme = "CHAR"; return CHAR;}
+#line 28 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "KEYWORD"); return CHAR;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 28 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "KEYWORD"); yylval.t.lexeme = "FLOAT"; return FLOAT;}
+#line 29 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "KEYWORD"); return FLOAT;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 29 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "KEYWORD"); return VOID;}
+#line 30 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "KEYWORD"); return VOID;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 30 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "KEYWORD"); return IF;}
+#line 31 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "KEYWORD"); return IF;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 31 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "KEYWORD"); return ELSE;}
+#line 32 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "KEYWORD"); return ELSE;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 32 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "KEYWORD"); return FOR;}
+#line 33 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "KEYWORD"); return FOR;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 33 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "KEYWORD"); return WHILE;}
+#line 34 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "KEYWORD"); return WHILE;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 34 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "KEYWORD"); return SWITCH;}
+#line 35 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "KEYWORD"); return SWITCH;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 35 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "KEYWORD"); return CONTINUE;}
+#line 36 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "KEYWORD"); return CONTINUE;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 36 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "KEYWORD"); return BREAK;}
+#line 37 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "KEYWORD"); return BREAK;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 37 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "KEYWORD"); return RETURN;}
+#line 38 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "KEYWORD"); return RETURN;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 38 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "KEYWORD"); return PRINTF;}
+#line 39 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "KEYWORD"); return PRINTF;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 39 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "KEYWORD"); return DEFAULT;}
+#line 40 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "KEYWORD"); return DEFAULT;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 40 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "KEYWORD"); return CASE;}
+#line 41 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "KEYWORD"); return CASE;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 42 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "IDENTIFIER"); yylval.t.lexeme = strdup(yytext); return ID;}
+#line 43 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "IDENTIFIER"); return ID;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 43 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "INT_CONST"); yylval.t.lexeme = strdup("INT"); yylval.t.val = atof(yytext); return INT_CONST;}
+#line 44 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "INT_CONST"); return INT_CONST;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 44 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "FLOAT_CONST"); yylval.t.lexeme = strdup("FLOAT"); yylval.t.val = atof(yytext); return FLOAT_CONST;}
+#line 45 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "FLOAT_CONST"); return FLOAT_CONST;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 45 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "CHAR_CONST"); yylval.t.lexeme = strdup("CHAR"); yylval.t.val = (float)(yytext[1]-'a'); return CHAR_CONST;}
+#line 46 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "CHAR_CONST"); return CHAR_CONST;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 46 "semanticAnalysis.l"
+#line 47 "ast.l"
 {return NEWLINE;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 47 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "OPERATOR"); return *yytext;}
+#line 48 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "OPERATOR"); return *yytext;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 48 "semanticAnalysis.l"
+#line 49 "ast.l"
 {//insertIntoTable(line, yytext, "SYMBOL");
     return *yytext;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 50 "semanticAnalysis.l"
-{yylval.t.lexeme = strdup(yytext); insertIntoTable(line, yytext, "SYMBOL"); return LESS;}
+#line 51 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "SYMBOL"); return GTR_EQ;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 51 "semanticAnalysis.l"
-{yylval.t.lexeme = strdup(yytext); insertIntoTable(line, yytext, "SYMBOL"); return GTR;}    
+#line 52 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "SYMBOL"); return LESS_EQ;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 52 "semanticAnalysis.l"
-{yylval.t.lexeme = strdup(yytext); insertIntoTable(line, yytext, "SYMBOL"); return GTR_EQ;}
+#line 53 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "SYMBOL"); return EQ_EQ;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 53 "semanticAnalysis.l"
-{yylval.t.lexeme = strdup(yytext); insertIntoTable(line, yytext, "SYMBOL"); return LESS_EQ;}
+#line 54 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "SYMBOL"); return NOT_EQ;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 54 "semanticAnalysis.l"
-{yylval.t.lexeme = strdup(yytext); insertIntoTable(line, yytext, "SYMBOL"); return EQ_EQ;}
+#line 55 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "SYMBOL"); return AND;}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 55 "semanticAnalysis.l"
-{yylval.t.lexeme = strdup(yytext); insertIntoTable(line, yytext, "SYMBOL"); return NOT_EQ;}
+#line 56 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "SYMBOL"); return OR;}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 56 "semanticAnalysis.l"
-{yylval.t.lexeme = strdup(yytext); insertIntoTable(line, yytext, "SYMBOL"); return AND;}
+#line 57 "ast.l"
+{strcpy(yylval.string, yytext); insertIntoTable(line, yytext, "SYMBOL"); return NOT;}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 57 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "SYMBOL"); return OR;}
+#line 58 "ast.l"
+{insertIntoTable(line, yytext, "UNKNOWN"); return UNK;}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 58 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "SYMBOL"); return NOT;}
+#line 60 "ast.l"
+{insertIntoTable(line, yytext, "UNKNOWN"); return UNK;}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 59 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "UNKNOWN"); return UNK;}
+#line 62 "ast.l"
+{insertIntoTable(line,yytext,"ARR_E");return ARR_E;}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 61 "semanticAnalysis.l"
-{insertIntoTable(line, yytext, "UNKNOWN"); return UNK;}
-	YY_BREAK
-case 41:
-YY_RULE_SETUP
-#line 63 "semanticAnalysis.l"
-{insertIntoTable(line,yytext,"ARR_E");return ARR_E;}
-	YY_BREAK
-case 42:
-YY_RULE_SETUP
-#line 64 "semanticAnalysis.l"
+#line 64 "ast.l"
 {
                                     for(int i = yyleng - 1;i>=0; i--){
                                         unput(yytext[i]);
@@ -1087,9 +1078,9 @@ YY_RULE_SETUP
                                     BEGIN(ARRAY);
                                     }
 	YY_BREAK
-case 43:
+case 41:
 YY_RULE_SETUP
-#line 71 "semanticAnalysis.l"
+#line 71 "ast.l"
 {
                                                     for(int i = yyleng - 1;i>=0; i--){
                                                         unput(yytext[i]);
@@ -1097,41 +1088,39 @@ YY_RULE_SETUP
                                                     BEGIN(ARRAY);
                                                   }
 	YY_BREAK
-case 44:
+case 42:
 YY_RULE_SETUP
-#line 78 "semanticAnalysis.l"
-{BEGIN(INITIAL); insertIntoTable(line,yytext,"ARR"); yylval.t.lexeme = strdup(yytext); return ARR;}
+#line 78 "ast.l"
+{BEGIN(INITIAL); insertIntoTable(line,yytext,"ARR"); strcpy(yylval.string,yytext); return ARR;}
 	YY_BREAK
-case 45:
+case 43:
 YY_RULE_SETUP
-#line 80 "semanticAnalysis.l"
+#line 80 "ast.l"
 {
                                                     for(int i = yyleng-1; i>=0; i--){
                                                         unput(yytext[i]);
                                                     }
                                                     BEGIN(FUNCTION);}
 	YY_BREAK
-case 46:
+case 44:
 YY_RULE_SETUP
-#line 86 "semanticAnalysis.l"
-{
-                                yylval.t.lexeme = strdup(yytext);
+#line 86 "ast.l"
+{strcpy(yylval.string, yytext);
                                 BEGIN(INITIAL);
                                 if(strcmp("if", yytext)==0){insertIntoTable(line, yytext, "KEYWORD"); return IF;}
                                 else if(strcmp("printf", yytext)==0){insertIntoTable(line, yytext, "KEYWORD"); return PRINTF;}
                                 else if(strcmp("for", yytext)==0){insertIntoTable(line, yytext, "KEYWORD"); return FOR;}
                                 else if(strcmp("while", yytext)==0){insertIntoTable(line, yytext, "KEYWORD"); return WHILE;}
-                                else if(strcmp("switch", yytext)==0){insertIntoTable(line, yytext, "KEYWORD"); return SWITCH;}
                                 insertIntoTable(line, yytext, "FUNCTION");
                                 return FUNC;
                                 }
 	YY_BREAK
-case 47:
+case 45:
 YY_RULE_SETUP
-#line 98 "semanticAnalysis.l"
+#line 96 "ast.l"
 ECHO;
 	YY_BREAK
-#line 1135 "lex.yy.c"
+#line 1124 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(FUNCTION):
 case YY_STATE_EOF(ARRAY):
@@ -2138,7 +2127,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 98 "semanticAnalysis.l"
+#line 96 "ast.l"
 
 typedef struct node {
     char *lexeme;

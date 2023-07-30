@@ -54,42 +54,41 @@ extern int yydebug;
     YYEOF = 0,                     /* "end of file"  */
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
-    ARR2 = 258,                    /* ARR2  */
-    ARR_E = 259,                   /* ARR_E  */
-    INT = 260,                     /* INT  */
-    FLOAT = 261,                   /* FLOAT  */
-    CHAR = 262,                    /* CHAR  */
-    VOID = 263,                    /* VOID  */
-    IF = 264,                      /* IF  */
-    ELSE = 265,                    /* ELSE  */
-    WHILE = 266,                   /* WHILE  */
-    FOR = 267,                     /* FOR  */
-    SWITCH = 268,                  /* SWITCH  */
-    CONTINUE = 269,                /* CONTINUE  */
-    BREAK = 270,                   /* BREAK  */
-    RETURN = 271,                  /* RETURN  */
-    PRINTF = 272,                  /* PRINTF  */
-    DEFAULT = 273,                 /* DEFAULT  */
-    CASE = 274,                    /* CASE  */
-    GTR_EQ = 275,                  /* GTR_EQ  */
-    LESS_EQ = 276,                 /* LESS_EQ  */
-    NOT_EQ = 277,                  /* NOT_EQ  */
-    AND = 278,                     /* AND  */
-    OR = 279,                      /* OR  */
-    NOT = 280,                     /* NOT  */
-    EQ_EQ = 281,                   /* EQ_EQ  */
-    LESS = 282,                    /* LESS  */
-    GTR = 283,                     /* GTR  */
-    NEWLINE = 284,                 /* NEWLINE  */
-    UNK = 285,                     /* UNK  */
-    END_OF_FILE = 286,             /* END_OF_FILE  */
-    ID = 287,                      /* ID  */
-    INT_CONST = 288,               /* INT_CONST  */
-    FLOAT_CONST = 289,             /* FLOAT_CONST  */
-    CHAR_CONST = 290,              /* CHAR_CONST  */
-    FUNC = 291,                    /* FUNC  */
-    STRING = 292,                  /* STRING  */
-    ARR = 293                      /* ARR  */
+    ID = 258,                      /* ID  */
+    INT_CONST = 259,               /* INT_CONST  */
+    FLOAT_CONST = 260,             /* FLOAT_CONST  */
+    CHAR_CONST = 261,              /* CHAR_CONST  */
+    ARR = 262,                     /* ARR  */
+    ARR2 = 263,                    /* ARR2  */
+    ARR_E = 264,                   /* ARR_E  */
+    FUNC = 265,                    /* FUNC  */
+    STRING = 266,                  /* STRING  */
+    INT = 267,                     /* INT  */
+    FLOAT = 268,                   /* FLOAT  */
+    CHAR = 269,                    /* CHAR  */
+    VOID = 270,                    /* VOID  */
+    IF = 271,                      /* IF  */
+    ELSE = 272,                    /* ELSE  */
+    WHILE = 273,                   /* WHILE  */
+    FOR = 274,                     /* FOR  */
+    SWITCH = 275,                  /* SWITCH  */
+    CONTINUE = 276,                /* CONTINUE  */
+    BREAK = 277,                   /* BREAK  */
+    RETURN = 278,                  /* RETURN  */
+    PRINTF = 279,                  /* PRINTF  */
+    DEFAULT = 280,                 /* DEFAULT  */
+    CASE = 281,                    /* CASE  */
+    GTR_EQ = 282,                  /* GTR_EQ  */
+    LESS_EQ = 283,                 /* LESS_EQ  */
+    NOT_EQ = 284,                  /* NOT_EQ  */
+    AND = 285,                     /* AND  */
+    OR = 286,                      /* OR  */
+    NOT = 287,                     /* NOT  */
+    EQ_EQ = 288,                   /* EQ_EQ  */
+    NEWLINE = 289,                 /* NEWLINE  */
+    UNK = 290,                     /* UNK  */
+    END_OF_FILE = 291,             /* END_OF_FILE  */
+    COMP_OP = 292                  /* COMP_OP  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -98,55 +97,51 @@ extern int yydebug;
 #define YYEOF 0
 #define YYerror 256
 #define YYUNDEF 257
-#define ARR2 258
-#define ARR_E 259
-#define INT 260
-#define FLOAT 261
-#define CHAR 262
-#define VOID 263
-#define IF 264
-#define ELSE 265
-#define WHILE 266
-#define FOR 267
-#define SWITCH 268
-#define CONTINUE 269
-#define BREAK 270
-#define RETURN 271
-#define PRINTF 272
-#define DEFAULT 273
-#define CASE 274
-#define GTR_EQ 275
-#define LESS_EQ 276
-#define NOT_EQ 277
-#define AND 278
-#define OR 279
-#define NOT 280
-#define EQ_EQ 281
-#define LESS 282
-#define GTR 283
-#define NEWLINE 284
-#define UNK 285
-#define END_OF_FILE 286
-#define ID 287
-#define INT_CONST 288
-#define FLOAT_CONST 289
-#define CHAR_CONST 290
-#define FUNC 291
-#define STRING 292
-#define ARR 293
+#define ID 258
+#define INT_CONST 259
+#define FLOAT_CONST 260
+#define CHAR_CONST 261
+#define ARR 262
+#define ARR2 263
+#define ARR_E 264
+#define FUNC 265
+#define STRING 266
+#define INT 267
+#define FLOAT 268
+#define CHAR 269
+#define VOID 270
+#define IF 271
+#define ELSE 272
+#define WHILE 273
+#define FOR 274
+#define SWITCH 275
+#define CONTINUE 276
+#define BREAK 277
+#define RETURN 278
+#define PRINTF 279
+#define DEFAULT 280
+#define CASE 281
+#define GTR_EQ 282
+#define LESS_EQ 283
+#define NOT_EQ 284
+#define AND 285
+#define OR 286
+#define NOT 287
+#define EQ_EQ 288
+#define NEWLINE 289
+#define UNK 290
+#define END_OF_FILE 291
+#define COMP_OP 292
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 17 "semanticAnalysis.y"
+#line 29 "three.y"
 
-    struct{
-        char *lexeme;
-        float val;
-    }t;
+    char* lexeme;
 
-#line 150 "y.tab.h"
+#line 145 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

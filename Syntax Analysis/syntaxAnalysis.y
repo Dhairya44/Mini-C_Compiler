@@ -14,10 +14,10 @@
 %token NEWLINE UNK END_OF_FILE
 %%
 
-S : BEGIN {printf("DONE!\n");}
+S : BEGIN
 
-BEGIN : FUNC_DECL BEGIN {printf("FUNC_DECL\n");}
-      | FUNC_DECL {printf("FUNC_DECL2\n");}
+BEGIN : FUNC_DECL BEGIN
+      | FUNC_DECL
 
 TYPE : INT | FLOAT | CHAR | VOID
 
@@ -34,7 +34,12 @@ STMT_LIST : STMT STMT_LIST
           | '{' STMT_LIST '}'
           | '{' STMT_LIST '}' STMT_LIST
 
-STMT : PRINT | RTRN_STMT | FUNC_CALL | BRK_CNT | ARR_DECL | FOR_STMT | EXPR | WHILE_STMT | IF_STMT | ASSGN ';' | DECL ';' | ';'
+STMT : PRINT | RTRN_STMT | SWITCH_STMT | FUNC_CALL | BRK_CNT | ARR_DECL | FOR_STMT | WHILE_STMT | IF_STMT | ASSGN ';' | DECL ';' | ';'
+
+SWITCH_STMT : SWITCH '(' ID ')' '{' CASE_STMT '}'
+
+CASE_STMT : CASE INT_CONST ':' STMT_LIST CASE_STMT
+          | DEFAULT ':' STMT_LIST
 
 BRK_CNT : CONTINUE ';' | BREAK ';'
 
@@ -49,17 +54,24 @@ COMP_OP : '>' | '<' | GTR_EQ | LESS_EQ | NOT_EQ | AND | OR | NOT | EQ_EQ
 TERM : TERM '+' FACTOR | TERM '-' FACTOR | TERM '*' FACTOR | TERM '/' FACTOR | FACTOR
 FACTOR : '(' EXPR ')' | ID | CONST
 
-ASSGN : ID '=' EXPR ASSGN_TAIL
-ASSGN_TAIL : ',' ID '=' EXPR ASSGN_TAIL |
+ASSGN : ID '=' EXPR ',' ASSGN
+      | EXPR
+      | ID '=' EXPR
+      | EXPR ',' ASSGN
+      | ARR '=' EXPR ',' ASSGN 
+      | ARR '=' EXPR 
+      | ARR2 '=' EXPR ',' ASSGN 
+      | ARR2 '=' EXPR
 
-DECL : TYPE ID DECL_TAIL
-DECL_TAIL : ',' ID DECL_TAIL | '=' EXPR DECL_TAIL |
 
-IF_STMT : MAT | UNMAT
+DECL : TYPE DECL_TAIL                      
+DECL_TAIL : ID '=' EXPR
+          | ID '=' EXPR ',' DECL_TAIL 
+          | ID
+          | ID ',' DECL_TAIL
 
-MAT : IF '(' EXPR ')' '{' STMT_LIST '}'
-
-UNMAT : IF '(' EXPR ')' '{' STMT_LIST '}' ELSE '{' STMT_LIST '}'
+IF_STMT :  IF '(' EXPR ')' '{' STMT_LIST '}'
+        |  IF '(' EXPR ')' '{' STMT_LIST '}' ELSE '{' STMT_LIST '}'
 
 PRINT : PRINTF '(' STRING ')' ';'
       | PRINTF '(' STRING ',' VAR_LIST ')' ';'
@@ -71,7 +83,7 @@ RTRN_STMT : RETURN ID ';'
        | RETURN CONST ';'
        | RETURN ';'
 
-CONST : INT_CONST | FLOAT_CONST | CHAR_CONST
+CONST : INT_CONST | FLOAT_CONST | CHAR_CONST | ARR | ARR2
 
 FUNC_CALL : TYPE ID '=' FUNC '(' MIXED_LIST ')' ';'
           | TYPE ID '=' FUNC '(' ')' ';'
@@ -81,10 +93,10 @@ FUNC_CALL : TYPE ID '=' FUNC '(' MIXED_LIST ')' ';'
           | ID '=' FUNC '(' MIXED_LIST ')' ';'
 
 ARR_DECL : TYPE ARR ';'
-         | TYPE ARR '=' '{' CONST_LIST '}' ';'
-         | TYPE ARR_E '=' '{' CONST_LIST '}' ';'
+/*       | TYPE ARR '=' '{' CONST_LIST '}' ';'
+         | TYPE ARR_E '=' '{' CONST_LIST '}' ';' */
          | TYPE ARR2 ';'
-         | TYPE ARR2 '=' '{' CONST_LIST2 '}' ';'
+//       | TYPE ARR2 '=' '{' CONST_LIST2 '}' ';'
 
 CONST_LIST : INT_LIST | FLOAT_LIST | CHAR_LIST
 
@@ -113,5 +125,6 @@ int main()
     yyin = fopen("../input.txt","r");
     yyparse();
     printTable();
+    printf("Parse Successful!\n");
     return 0;
 }
